@@ -10,7 +10,7 @@ terraform {
 
 resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS RDS"
+  dashboard_name = "aws rds"
 
   chart {
     name = "CPU Utilization"
@@ -91,8 +91,31 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Freeable Memory"
+    name = "Deadlocks"
     rank = "2"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.deadlocks_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "Freeable Memory"
+    rank = "3"
     type = "timeseries"
 
     query {
@@ -116,124 +139,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.free_storage_space_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "Read IOPS"
-    rank = "3"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.read_iops_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.write_iops_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "Read Latency"
-    rank = "4"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.read_latency_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.write_latency_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "Read Throughput"
-    rank = "5"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.read_throughput_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.write_throughput_count"
+      metric              = "aws.rds.free_local_storage_count"
       timeseries_operator = "delta"
 
 
@@ -248,7 +154,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
 
   chart {
     name = "Network Receive Throughput"
-    rank = "6"
+    rank = "4"
     type = "timeseries"
 
     query {
@@ -273,6 +179,68 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.network_transmit_throughput_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "DML Latency"
+    rank = "5"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.dml_latency_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+    query {
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.dml_throughput_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "Queries"
+    rank = "6"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.queries_count"
       timeseries_operator = "delta"
 
 
@@ -325,8 +293,86 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "CPU Credit Usage"
+    name = "Read IOPS"
     rank = "8"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.read_iops_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+    query {
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.write_iops_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "Read Throughput"
+    rank = "9"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.read_throughput_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+    query {
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.write_throughput_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "CPU Credit Usage"
+    rank = "10"
     type = "timeseries"
 
     query {
