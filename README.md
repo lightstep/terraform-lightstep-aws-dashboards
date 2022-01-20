@@ -15,9 +15,10 @@ This is a Terraform module for deploying pre-defined set of AWS dashboards in Li
 
 Each AWS resource has an associated module that will create Lightstep dashboards to view Cloudwatch metrics. Currently, these resources are supported:
 
-* __Amazon EC2__ (module: [`ec2-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/ec2-dashboard))
-* __Amazon RDS__ (module: [`rds-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/rds-dashboard))
-* __Amazon Application ELB__ (module: [`applicationelb-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/applicationelb-dashboard))
+* __EC2__ (module: [`ec2-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/ec2-dashboard))
+* __RDS__ (module: [`rds-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/rds-dashboard))
+*  __Lambda__ (module: [`lambda-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/lambda-dashboard))
+* __Application ELB__ (module: [`applicationelb-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/applicationelb-dashboard))
 
 ## How to Use This Module
 

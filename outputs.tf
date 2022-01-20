@@ -8,8 +8,12 @@ output "lightstep_aws_rds_dashboard_url" {
   description = "Lightstep AWS RDS Dashboard URL"
 }
 
-
 output "lightstep_app_elb_dashboard_url" {
   value       = module.lightstep_app_elb_dashboard.dashboard_url
   description = "Lightstep AWS Application ELB Dashboard URL"
+}
+
+output "lightstep_lambda_dashboard_url" {
+  value       = module.lightstep_lambda_dashboard.dashboard_url
+  description = "Lightstep AWS Lambda Dashboard URL"
 }
