@@ -22,6 +22,7 @@ Each AWS resource has an associated module that will create Lightstep dashboards
 *  __Kinesis__ (module: [`kinesis-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/kinesis-dashboard))
 *  __SQS__ (module: [`sqs-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/sqs-dashboard))
 *  __SNS__ (module: [`sns-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/sns-dashboard))
+* __API Gateway__ (module: [`apigateway-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/apigateway-dashboard))
 * __Application ELB__ (module: [`applicationelb-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/applicationelb-dashboard))
 
 ## How to Use This Module

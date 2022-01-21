@@ -37,3 +37,8 @@ output "lightstep_dynamodb_dashboard_url" {
   value       = module.lightstep_dynamodb_dashboard.dashboard_url
   description = "Lightstep AWS DyanamoDB Dashboard URL"
 }
+
+output "lightstep_apigateway_dashboard_url" {
+  value       = module.lightstep_apigateway_dashboard.dashboard_url
+  description = "Lightstep AWS API Gateway Dashboard URL"
+}

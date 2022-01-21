@@ -54,3 +54,8 @@ module "lightstep_dynamodb_dashboard" {
   source            = "./modules/dynamodb-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_apigateway_dashboard" {
+  source            = "./modules/apigateway-dashboard"
+  lightstep_project = var.lightstep_project
+}
