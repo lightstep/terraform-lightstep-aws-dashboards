@@ -45,6 +45,11 @@ module "lightstep_sqs_dashboard" {
   lightstep_project = var.lightstep_project
 }
 
+module "lightstep_sns_dashboard" {
+  source            = "./modules/sns-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
 module "lightstep_dynamodb_dashboard" {
   source            = "./modules/dynamodb-dashboard"
   lightstep_project = var.lightstep_project
