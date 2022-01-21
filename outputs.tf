@@ -27,3 +27,8 @@ output "lightstep_sqs_dashboard_url" {
   value       = module.lightstep_sqs_dashboard.dashboard_url
   description = "Lightstep AWS Kinesis Dashboard URL"
 }
+
+output "lightstep_dynamodb_dashboard_url" {
+  value       = module.lightstep_dynamodb_dashboard.dashboard_url
+  description = "Lightstep AWS DyanamoDB Dashboard URL"
+}
