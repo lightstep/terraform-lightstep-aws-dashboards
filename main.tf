@@ -34,3 +34,8 @@ module "lightstep_lambda_dashboard" {
   source            = "./modules/lambda-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_kinesis_dashboard" {
+  source            = "./modules/kinesis-dashboard"
+  lightstep_project = var.lightstep_project
+}
