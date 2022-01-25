@@ -4,3 +4,7 @@ repos:
     hooks:
       - id: terraform-fmt
       - id: gofmt
+      - id: tflint
+        args:
+          - "--module"
+          - "--config=.tflint.hcl"

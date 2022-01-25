@@ -42,3 +42,14 @@ To deploy create Lightstep dashboards for production using this repo:
   of the required variables.
 
 - Run `terraform init` and `terraform apply` with your API Key set in the environment variable `LIGHTSTEP_API_KEY` (or the environment variable name you specified in configuration).
+
+## Development
+
+This repository uses `pre-commit` to format and lint HCL code.
+
+To install:
+
+```
+    $ brew install pre-commit
+    $ pre-commit install
+```

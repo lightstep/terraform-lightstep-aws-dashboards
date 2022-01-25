@@ -14,329 +14,296 @@ resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
 
   chart {
     name = "CPU Utilization"
-    rank = 1
+    rank = "1"
     type = "timeseries"
 
-    y_axis {
-      min = 0
-      max = 100
-    }
-
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.ec2.cpu_utilization_max"
       timeseries_operator = "last"
-      metric              = "aws.ec2.cpuutilization"
 
       include_filters = [
         {
-          key   = "region"
-          value = var.aws_region
-        }
+          key   = "cloud.region"
+          value = "us-east-1"
+        },
       ]
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = []
       }
+
     }
+
   }
 
   chart {
     name = "CPU Credit"
-    rank = 2
+    rank = "2"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.ec2.cpu_credit_usage_max"
       timeseries_operator = "last"
-      metric              = "aws.ec2.cpucredit_usage"
 
       include_filters = [
         {
-          key   = "region"
-          value = var.aws_region
-        }
+          key   = "cloud.region"
+          value = "us-east-1"
+        },
       ]
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.ec2.cpu_credit_balance_max"
       timeseries_operator = "last"
-      metric              = "aws.ec2.cpucredit_balance"
 
       include_filters = [
         {
-          key   = "region"
-          value = var.aws_region
-        }
+          key   = "cloud.region"
+          value = "us-east-1"
+        },
       ]
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
+
   }
 
   chart {
     name = "Disk Ops"
-    rank = 3
+    rank = "3"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.disk_read_ops"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.disk_read_ops_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.disk_write_ops"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.disk_write_ops_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
+
   }
 
   chart {
     name = "Disk Bytes"
-    rank = 4
+    rank = "4"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.disk_read_bytes"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.disk_read_bytes_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.disk_write_bytes"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.disk_write_bytes_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
+
   }
 
   chart {
     name = "Network"
-    rank = 5
+    rank = "5"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.network_in"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.network_in_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.network_out"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.network_out_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
+
   }
 
   chart {
     name = "Network Packets"
-    rank = 6
+    rank = "6"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.network_packets_in"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.network_packets_in_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.network_packets_out"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.network_packets_out_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
+
   }
 
   chart {
     name = "Status Check"
-    rank = 7
+    rank = "7"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.status_check_failed_system"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.status_check_failed_system_count"
+      timeseries_operator = "delta"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.status_check_failed_instance"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.status_check_failed_instance_count"
+      timeseries_operator = "delta"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "c"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.ec2.status_check_failed"
+      query_name = "c"
+      display    = "line"
+      hidden     = false
 
-      include_filters = [
-        {
-          key   = "region"
-          value = var.aws_region
-        }
-      ]
+      metric              = "aws.ec2.status_check_failed_count"
+      timeseries_operator = "delta"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["instance_id"]
+        keys               = ["InstanceId", ]
       }
+
     }
+
   }
 
 }
