@@ -14,327 +14,392 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
 
   chart {
     name = "CPU Utilization"
-    rank = 1
+    rank = "1"
     type = "timeseries"
 
-    y_axis {
-      min = 0
-      max = 100
-    }
-
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.cpu_utilization_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.cpuutilization"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
   }
 
   chart {
     name = "Database Connections / Disk Queue Depth"
-    rank = 2
+    rank = "2"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.rds.database_connections"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.database_connections_count"
+      timeseries_operator = "delta"
+
 
       group_by {
         aggregation_method = "count"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "last"
-      metric              = "aws.rds.disk_queue_depth"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.disk_queue_depth_count"
+      timeseries_operator = "delta"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
   }
 
   chart {
     name = "Freeable Memory / Freeable Storage Space"
-    rank = 3
+    rank = "3"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.freeable_memory_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.freeable_memory"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.free_storage_space_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.free_storage_space"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
   }
 
   chart {
     name = "Read IOPS / Write IOPS / Burst Balance"
-    rank = 4
+    rank = "4"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.rds.read_iops"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
 
-      group_by {
-        aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
-      }
-    }
-
-    query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.rds.write_iops"
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
-      }
-    }
-
-    query {
-      hidden              = false
-      query_name          = "c"
-      display             = "line"
+      metric              = "aws.rds.read_iops_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.burst_balance"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
+    query {
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.write_iops_max"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "c"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.burst_balance_max"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
   }
 
   chart {
     name = "Read Latency / Write Latency"
-    rank = 5
+    rank = "5"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.read_latency_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.read_latency"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.write_latency_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.write_latency"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
   }
 
   chart {
     name = "Read Throughput / Write Throughput"
-    rank = 6
+    rank = "6"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.read_throughput_count"
       timeseries_operator = "delta"
-      metric              = "aws.rds.read_throughput"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["dbinstanceidentifer", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.rds.write_throughput"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.write_throughput_count"
+      timeseries_operator = "rate"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["dbinstanceidentifer", ]
       }
+
     }
+
   }
 
   chart {
     name = "Network Receive Throughput / Network Transmit Throughput"
-    rank = 7
+    rank = "7"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.rds.network_receive_throughput"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.network_receive_throughput_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.rds.network_transmit_throughput"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.network_transmit_throughput_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
   }
 
   chart {
     name = "Swap Usage / Bin Log Disk Usage"
-    rank = 8
+    rank = "8"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.swap_usage_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.swap_usage"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.bin_log_disk_usage_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.bin_log_disk_usage"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
   }
 
   chart {
     name = "CPU Credit Usage / CPU Credit Balance"
-    rank = 9
+    rank = "9"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.cpu_credit_usage_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.cpucredit_usage"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.cpu_credit_balance_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.cpucredit_balance"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
   }
 
   chart {
     name = "CPU Credit Usage / CPU Credit Balance"
-    rank = 10
+    rank = "10"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.cpu_credit_usage_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.cpucredit_usage"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.cpu_credit_balance_max"
       timeseries_operator = "last"
-      metric              = "aws.rds.cpucredit_balance"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["dbinstanceidentifer"]
+        keys               = ["DBInstanceIdentifier", ]
       }
+
     }
+
   }
 
 }

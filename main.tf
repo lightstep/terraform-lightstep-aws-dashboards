@@ -25,6 +25,11 @@ module "lightstep_rds_dashboard" {
   lightstep_project = var.lightstep_project
 }
 
+module "lightstep_ecs_dashboard" {
+  source            = "./modules/ecs-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
 module "lightstep_app_elb_dashboard" {
   source            = "./modules/applicationelb-dashboard"
   lightstep_project = var.lightstep_project
@@ -59,3 +64,4 @@ module "lightstep_apigateway_dashboard" {
   source            = "./modules/apigateway-dashboard"
   lightstep_project = var.lightstep_project
 }
+

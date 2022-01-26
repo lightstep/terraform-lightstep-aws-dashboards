@@ -1,9 +1,9 @@
-output "lightstep_aws_ec2_dashboard_url" {
+output "lightstep_ec2_dashboard_url" {
   value       = module.lightstep_ec2_dashboard.dashboard_url
   description = "Lightstep AWS EC2 Dashboard URL"
 }
 
-output "lightstep_aws_rds_dashboard_url" {
+output "lightstep_rds_dashboard_url" {
   value       = module.lightstep_rds_dashboard.dashboard_url
   description = "Lightstep AWS RDS Dashboard URL"
 }
@@ -41,4 +41,9 @@ output "lightstep_dynamodb_dashboard_url" {
 output "lightstep_apigateway_dashboard_url" {
   value       = module.lightstep_apigateway_dashboard.dashboard_url
   description = "Lightstep AWS API Gateway Dashboard URL"
+}
+
+output "lightstep_ecs_dashboard_url" {
+  value       = module.lightstep_ecs_dashboard.dashboard_url
+  description = "Lightstep AWS ECS Dashboard URL"
 }
