@@ -47,3 +47,8 @@ output "lightstep_ecs_dashboard_url" {
   value       = module.lightstep_ecs_dashboard.dashboard_url
   description = "Lightstep AWS ECS Dashboard URL"
 }
+
+output "lightstep_elasticache_redis_dashboard_url" {
+  value       = module.lightstep_elasticache_redis_dashboard.dashboard_url
+  description = "Lightstep AWS Elasticache (Redis) Dashboard URL"
+}

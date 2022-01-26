@@ -65,3 +65,7 @@ module "lightstep_apigateway_dashboard" {
   lightstep_project = var.lightstep_project
 }
 
+module "lightstep_elasticache_redis_dashboard" {
+  source            = "./modules/elasticache-redis-dashboard"
+  lightstep_project = var.lightstep_project
+}
