@@ -13,156 +13,142 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
   dashboard_name = "AWS Application ELB"
 
   chart {
-    name = "Request Count / Target Response Time"
-    rank = 1
+    name = "Request Count"
+    rank = "1"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.application_elb.request_count_count"
       timeseries_operator = "delta"
-      metric              = "aws.applicationelb.request_count"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["loadbalancer"]
+        keys               = ["LoadBalancer", ]
       }
+
     }
 
-    query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.applicationelb.target_response_time"
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["loadbalancer"]
-      }
-    }
   }
 
   chart {
     name = "HTTP Code"
-    rank = 2
+    rank = "2"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.applicationelb.httpcode_elb_5xx"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.application_elb.http_code_elb_5xx_count_count"
+      timeseries_operator = "rate"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["loadbalancer"]
+        keys               = ["LoadBalancer", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.applicationelb.httpcode_elb_4xx"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.application_elb.http_code_elb_4xx_count_count"
+      timeseries_operator = "rate"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["loadbalancer"]
+        keys               = ["LoadBalancer", ]
       }
+
     }
 
-    query {
-      hidden              = false
-      query_name          = "c"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.applicationelb.httpcode_elb_3xx"
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["loadbalancer"]
-      }
-    }
-
-    query {
-      hidden              = false
-      query_name          = "d"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.applicationelb.httpcode_elb_2xx"
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["loadbalancer"]
-      }
-    }
   }
 
   chart {
     name = "Connection Count"
-    rank = 3
+    rank = "3"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.applicationelb.active_connection_count"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.application_elb.active_connection_count_count"
+      timeseries_operator = "rate"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["loadbalancer"]
+        keys               = ["LoadBalancer", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.application_elb.new_connection_count_count"
       timeseries_operator = "delta"
-      metric              = "aws.applicationelb.new_connection_count"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["loadbalancer"]
+        keys               = ["LoadBalancer", ]
       }
+
     }
+
   }
 
   chart {
     name = "Consumed LB Capacity Units / Processed Bytes"
-    rank = 4
+    rank = "4"
     type = "timeseries"
 
     query {
-      hidden              = false
-      query_name          = "a"
-      display             = "line"
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.application_elb.consumed_lcus_max"
       timeseries_operator = "last"
-      metric              = "aws.applicationelb.consumed_lcus"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["loadbalancer"]
+        keys               = ["LoadBalancer", ]
       }
+
     }
 
     query {
-      hidden              = false
-      query_name          = "b"
-      display             = "line"
-      timeseries_operator = "delta"
-      metric              = "aws.applicationelb.processed_bytes"
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.application_elb.processed_bytes_max"
+      timeseries_operator = "last"
+
 
       group_by {
         aggregation_method = "max"
-        keys               = ["loadbalancer"]
+        keys               = ["LoadBalancer", ]
       }
+
     }
+
   }
 }
