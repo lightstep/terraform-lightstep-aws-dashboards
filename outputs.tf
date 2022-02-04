@@ -52,3 +52,8 @@ output "lightstep_elasticache_redis_dashboard_url" {
   value       = module.lightstep_elasticache_redis_dashboard.dashboard_url
   description = "Lightstep AWS Elasticache (Redis) Dashboard URL"
 }
+
+output "lightstep_s3_dashboard_url" {
+  value       = module.lightstep_s3_dashboard.dashboard_url
+  description = "Lightstep AWS S3 Dashboard URL"
+}

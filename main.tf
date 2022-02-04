@@ -69,3 +69,8 @@ module "lightstep_elasticache_redis_dashboard" {
   source            = "./modules/elasticache-redis-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_s3_dashboard" {
+  source            = "./modules/s3-dashboard"
+  lightstep_project = var.lightstep_project
+}

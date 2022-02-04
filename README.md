@@ -18,6 +18,7 @@ Each AWS resource has an associated module that will create Lightstep dashboards
 * __EC2__ (module: [`ec2-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/ec2-dashboard))
 * __RDS__ (module: [`rds-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/rds-dashboard))
 * __ECS__ (module: [`ecs-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/ecs-dashboard))
+* __S3__ (module: [`s3-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/s3-dashboard))
 * __DynamoDB__ (module: [`dynamodb-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/dynamodb-dashboard))
 *  __Lambda__ (module: [`lambda-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/lambda-dashboard))
 *  __Kinesis__ (module: [`kinesis-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/kinesis-dashboard))
