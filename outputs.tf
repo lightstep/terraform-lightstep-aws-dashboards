@@ -57,3 +57,8 @@ output "lightstep_s3_dashboard_url" {
   value       = module.lightstep_s3_dashboard.dashboard_url
   description = "Lightstep AWS S3 Dashboard URL"
 }
+
+output "lightstep_efs_dashboard_url" {
+  value       = module.lightstep_efs_dashboard.dashboard_url
+  description = "Lightstep AWS EFS Dashboard URL"
+}

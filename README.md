@@ -27,6 +27,7 @@ Each AWS resource has an associated module that will create Lightstep dashboards
 * __API Gateway__ (module: [`apigateway-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/apigateway-dashboard))
 * __Application ELB__ (module: [`applicationelb-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/applicationelb-dashboard))
 * __ElastiCache (Redis)__ (module: [`elasticache-redis-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/elasticache-redis-dashboard))
+* __EFS__ (module: [`efs-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/efs-dashboard))
 
 ## How to Use This Module
 

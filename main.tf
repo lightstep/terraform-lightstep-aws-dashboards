@@ -74,3 +74,8 @@ module "lightstep_s3_dashboard" {
   source            = "./modules/s3-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_efs_dashboard" {
+  source            = "./modules/efs-dashboard"
+  lightstep_project = var.lightstep_project
+}
