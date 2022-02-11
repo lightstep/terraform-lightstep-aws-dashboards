@@ -58,7 +58,7 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.elasti_cache.curr_connections_max"
@@ -74,7 +74,7 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.elasti_cache.new_connections_max"

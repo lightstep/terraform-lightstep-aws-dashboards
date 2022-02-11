@@ -19,7 +19,7 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.sqs.number_of_messages_sent_count"
@@ -35,7 +35,7 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.sqs.number_of_messages_received_count"
@@ -51,7 +51,7 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
 
     query {
       query_name = "c"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.sqs.number_of_messages_received_count"

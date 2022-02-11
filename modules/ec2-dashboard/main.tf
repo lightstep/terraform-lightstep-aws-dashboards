@@ -258,7 +258,7 @@ resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.ec2.status_check_failed_system_count"
@@ -274,7 +274,7 @@ resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.ec2.status_check_failed_instance_count"
@@ -290,7 +290,7 @@ resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
 
     query {
       query_name = "c"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.ec2.status_check_failed_count"

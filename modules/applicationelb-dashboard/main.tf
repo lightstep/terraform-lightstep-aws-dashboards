@@ -19,7 +19,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.application_elb.request_count_count"
@@ -81,12 +81,11 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.application_elb.active_connection_count_count"
-      timeseries_operator = "rate"
-
+      timeseries_operator = "delta"
 
       group_by {
         aggregation_method = "max"
@@ -97,7 +96,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.application_elb.new_connection_count_count"

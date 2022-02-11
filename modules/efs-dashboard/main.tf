@@ -74,7 +74,7 @@ resource "lightstep_metric_dashboard" "aws_sns_dashboard" {
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.efs.client_connections_max"
