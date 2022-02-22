@@ -47,7 +47,12 @@ jobs:
     - name: Setup Terraform Lint
       uses: terraform-linters/setup-tflint@v1
       with:
-        tflint_version: v0.26.0
+        tflint_version: v0.34.1
+
+    - name: Terraform Init
+      id: init
+      run: |
+        terraform init
 
     - name: Lint root module
       run: |
