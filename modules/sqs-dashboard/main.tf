@@ -13,7 +13,7 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
   dashboard_name = "AWS SQS"
 
   chart {
-    name = "Messages"
+    name = "Number of Messages Sent"
     rank = "0"
     type = "timeseries"
 
@@ -48,23 +48,6 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
       }
 
     }
-
-    query {
-      query_name = "c"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.sqs.number_of_messages_received_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
   }
 
   chart {
@@ -159,7 +142,7 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.sqs.sent_message_size_max"
