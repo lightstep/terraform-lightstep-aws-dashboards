@@ -23,7 +23,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_binlog_replica_lag_count"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -71,7 +71,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_binlog_replica_lag_sum"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -94,7 +94,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_dml_rejected_master_full_count"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -142,7 +142,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_dml_rejected_master_full_sum"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -165,7 +165,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_pq_request_attempted_count"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -213,7 +213,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_pq_request_attempted_sum"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -236,7 +236,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_pq_request_executed_count"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -284,7 +284,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_pq_request_attempted_sum"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -307,7 +307,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_pq_request_executed_count"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
@@ -355,7 +355,7 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_pq_request_executed_sum"
-      timeseries_operator = "last"
+      timeseries_operator = "count"
 
 
       group_by {
