@@ -14,21 +14,37 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
 
   chart {
     name = "CPU Utilization"
-    rank = "1"
+    rank = "0"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.cpu_utilization_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.cpu_utilization_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+    query {
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.replica_lag_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
@@ -36,13 +52,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Database Connections / Disk Queue Depth"
-    rank = "2"
+    name = "Database Connections"
+    rank = "1"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.rds.database_connections_count"
@@ -50,15 +66,15 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
 
 
       group_by {
-        aggregation_method = "count"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.rds.disk_queue_depth_count"
@@ -66,8 +82,8 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
@@ -75,38 +91,77 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Freeable Memory / Freeable Storage Space"
+    name = "Freeable Memory"
+    rank = "2"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.freeable_memory_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+    query {
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.free_storage_space_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "Read IOPS"
     rank = "3"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.freeable_memory_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.read_iops_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.free_storage_space_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.write_iops_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
@@ -114,54 +169,38 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Read IOPS / Write IOPS / Burst Balance"
+    name = "Read Latency"
     rank = "4"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.read_iops_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.read_latency_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.write_iops_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.write_latency_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-    query {
-      query_name = "c"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.burst_balance_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
@@ -169,52 +208,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Read Latency / Write Latency"
+    name = "Read Throughput"
     rank = "5"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.read_latency_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.write_latency_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "Read Throughput / Write Throughput"
-    rank = "6"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.rds.read_throughput_count"
@@ -222,24 +222,24 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["dbinstanceidentifer", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
       metric              = "aws.rds.write_throughput_count"
-      timeseries_operator = "rate"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["dbinstanceidentifer", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
@@ -247,38 +247,77 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Network Receive Throughput / Network Transmit Throughput"
+    name = "Network Receive Throughput"
+    rank = "6"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.network_receive_throughput_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+    query {
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.rds.network_transmit_throughput_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "Swap Usage"
     rank = "7"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.network_receive_throughput_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.swap_usage_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.network_transmit_throughput_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.bin_log_disk_usage_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
@@ -286,116 +325,38 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Swap Usage / Bin Log Disk Usage"
+    name = "CPU Credit Usage"
     rank = "8"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.swap_usage_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.cpu_credit_usage_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "line"
+      display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.bin_log_disk_usage_max"
-      timeseries_operator = "last"
+      metric              = "aws.rds.cpu_credit_balance_count"
+      timeseries_operator = "delta"
 
 
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "CPU Credit Usage / CPU Credit Balance"
-    rank = "9"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.cpu_credit_usage_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.cpu_credit_balance_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "CPU Credit Usage / CPU Credit Balance"
-    rank = "10"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.cpu_credit_usage_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.cpu_credit_balance_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
