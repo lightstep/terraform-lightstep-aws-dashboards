@@ -8,7 +8,7 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
+resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS RDS"
 
