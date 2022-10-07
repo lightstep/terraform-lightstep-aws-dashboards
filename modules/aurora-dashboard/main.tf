@@ -8,82 +8,75 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
+resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS RDS"
+  dashboard_name = "AWS Aurora"
 
   chart {
-    name = "CPU Utilization"
-    rank = "0"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.cpu_utilization_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.replica_lag_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "Database Connections"
+    name = "Binary lag replica DB cluster"
     rank = "1"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.database_connections_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_binlog_replica_lag_count"
+      timeseries_operator = "rate"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "count"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.disk_queue_depth_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_binlog_replica_lag_max"
+      timeseries_operator = "last"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "c"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_binlog_replica_lag_min"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "d"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_binlog_replica_lag_sum"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
@@ -91,38 +84,70 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Freeable Memory"
+    name = "DML Throughput"
     rank = "2"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.freeable_memory_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_dml_rejected_master_full_count"
+      timeseries_operator = "rate"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "count"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.free_storage_space_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_dml_rejected_master_full_max"
+      timeseries_operator = "last"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "c"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_dml_rejected_master_full_min"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "d"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_dml_rejected_master_full_sum"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
@@ -130,38 +155,70 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Read IOPS"
+    name = "Parallel Query Attempted"
     rank = "3"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.read_iops_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_pq_request_attempted_count"
+      timeseries_operator = "rate"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "count"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.write_iops_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_pq_request_attempted_max"
+      timeseries_operator = "last"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "c"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_pq_request_attempted_min"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "d"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_pq_request_attempted_sum"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
@@ -169,38 +226,70 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Read Latency"
+    name = "Parallel Query Executed"
     rank = "4"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.read_latency_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_pq_request_executed_count"
+      timeseries_operator = "rate"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "count"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.write_latency_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_pq_request_executed_max"
+      timeseries_operator = "last"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "c"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_pq_request_executed_min"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "d"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_pq_request_attempted_sum"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
@@ -208,159 +297,73 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Read Throughput"
+    name = "Parallel Query Executed"
     rank = "5"
     type = "timeseries"
 
     query {
       query_name = "a"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.read_throughput_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_pq_request_executed_count"
+      timeseries_operator = "rate"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "count"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
 
     query {
       query_name = "b"
-      display    = "bar"
+      display    = "line"
       hidden     = false
 
-      metric              = "aws.rds.write_throughput_count"
-      timeseries_operator = "delta"
+      metric              = "aws.rds.aurora_pq_request_executed_max"
+      timeseries_operator = "last"
 
 
       group_by {
-        aggregation_method = "sum"
-        keys               = []
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "c"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_pq_request_executed_min"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "min"
+        keys               = ["DBInstanceIdentifier", ]
+      }
+
+    }
+
+    query {
+      query_name = "d"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.rds.aurora_pq_request_executed_sum"
+      timeseries_operator = "rate"
+
+
+      group_by {
+        aggregation_method = "max"
+        keys               = ["DBInstanceIdentifier", ]
       }
 
     }
 
   }
-
-  chart {
-    name = "Network Receive Throughput"
-    rank = "6"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.network_receive_throughput_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.network_transmit_throughput_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "Swap Usage"
-    rank = "7"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.swap_usage_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.bin_log_disk_usage_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "CPU Credit Usage"
-    rank = "8"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.cpu_credit_usage_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.cpu_credit_balance_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
 }
