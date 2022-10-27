@@ -84,3 +84,28 @@ module "lightstep_aurora_dashboard" {
   source            = "./modules/aurora-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_billing_dashboard" {
+  source            = "./modules/billing-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_cloudfront_dashboard" {
+  source            = "./modules/cloudfront-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_natgateway_dashboard" {
+  source            = "./modules/natgateway-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_kafka_dashboard" {
+  source            = "./modules/kafka-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_networkelb_dashboard" {
+  source            = "./modules/networkelb-dashboard"
+  lightstep_project = var.lightstep_project
+}

@@ -67,3 +67,28 @@ output "lightstep_aurora_dashboard_url" {
   value       = module.lightstep_aurora_dashboard.dashboard_url
   description = "Lightstep AWS Aurora Dashboard URL"
 }
+
+output "lightstep_billing_dashboard_url" {
+  value       = module.lightstep_billing_dashboard.dashboard_url
+  description = "Lightstep AWS Billing Dashboard URL"
+}
+
+output "lightstep_cloudfront_dashboard_url" {
+  value       = module.lightstep_cloudfront_dashboard.dashboard_url
+  description = "Lightstep AWS Cloudfront Dashboard URL"
+}
+
+output "lightstep_kafka_dashboard_url" {
+  value       = module.lightstep_kafka_dashboard.dashboard_url
+  description = "Lightstep AWS Kafka Topic Dashboard URL"
+}
+
+output "lightstep_natgateway_dashboard_url" {
+  value       = module.lightstep_natgateway_dashboard.dashboard_url
+  description = "Lightstep AWS NAT Gateway Dashboard URL"
+}
+
+output "lightstep_networkelb_dashboard_url" {
+  value       = module.lightstep_networkelb_dashboard.dashboard_url
+  description = "Lightstep AWS NetworkELB Dashboard URL"
+}
