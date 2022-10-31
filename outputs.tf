@@ -67,3 +67,18 @@ output "lightstep_aurora_dashboard_url" {
   value       = module.lightstep_aurora_dashboard.dashboard_url
   description = "Lightstep AWS Aurora Dashboard URL"
 }
+
+output "lightstep_athena_dashboard_url" {
+  value       = module.lightstep_aurora_dashboard.dashboard_url
+  description = "Lightstep AWS Athena Dashboard URL"
+}
+
+output "lightstep_redshift_dashboard_url" {
+  value       = module.lightstep_redshift_dashboard.dashboard_url
+  description = "Lightstep AWS Redshift Dashboard URL"
+}
+
+output "lightstep_route53_dashboard_url" {
+  value       = module.lightstep_route53_dashboard.dashboard_url
+  description = "Lightstep AWS Route 53 Dashboard URL"
+}
