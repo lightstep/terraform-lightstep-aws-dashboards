@@ -96,7 +96,7 @@ resource "lightstep_metric_dashboard" "aws_ecs_dashboard" {
 
 
       group_by {
-        aggregation_method = "sum"
+        aggregation_method = "sum" # is aggregation method the same as wg-doc's unit?
         keys               = []
       }
 
