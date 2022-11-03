@@ -71,8 +71,3 @@ output "lightstep_inspector_dashboard_url" {
   value       = module.lightstep_inspector_dashboard.dashboard_url
   description = "Lightstep AWS INSPECTOR Dashboard URL"
 }
-
-output "lightstep_inspector_dashboard_url" {
-  value       = module.lightstep_inspector_dashboard.dashboard_url
-  description = "Lightstep AWS INSPECTOR Dashboard URL"
-}
