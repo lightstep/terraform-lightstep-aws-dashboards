@@ -306,9 +306,6 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
 
     }
 
-    query {
-      query_name = "b"
-      display    = "bar"
       hidden     = false
 
       metric              = "aws.rds.bin_log_disk_usage_count"
@@ -369,10 +366,9 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       metric              = "aws.rds.aurora_pq_request_executed_max"
       timeseries_operator = "last"
 
-
       group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
+        aggregation_method = "sum"
+        keys               = []
       }
 
     }
@@ -399,77 +395,6 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       hidden     = false
 
       metric              = "aws.rds.aurora_pq_request_attempted_sum"
-      timeseries_operator = "rate"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "Parallel Query Executed"
-    rank = "5"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_executed_count"
-      timeseries_operator = "rate"
-
-
-      group_by {
-        aggregation_method = "count"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_executed_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-    query {
-      query_name = "c"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_executed_min"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "min"
-        keys               = ["DBInstanceIdentifier", ]
-      }
-
-    }
-
-    query {
-      query_name = "d"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_executed_sum"
       timeseries_operator = "rate"
 
 
