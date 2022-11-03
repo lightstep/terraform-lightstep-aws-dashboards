@@ -84,3 +84,8 @@ module "lightstep_aurora_dashboard" {
   source            = "./modules/aurora-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+output "lightstep_inspector_dashboard" {
+  source            = "./modules/inspector-dashboard"
+  lightstep_project = var.lightstep_project
+}
