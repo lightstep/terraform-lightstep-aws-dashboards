@@ -29,6 +29,7 @@ Each AWS resource has an associated module that will create Lightstep dashboards
 * __ElastiCache (Redis)__ (module: [`elasticache-redis-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/elasticache-redis-dashboard))
 * __EFS__ (module: [`efs-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/efs-dashboard))
 * __Aurora__ (module: [`aurora-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/aurora-dashboard))
+* __Route53__ (module: [`route53-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/route53-dashboard))
 
 
 ## How to Use This Module
