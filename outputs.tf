@@ -67,3 +67,7 @@ output "lightstep_aurora_dashboard_url" {
   value       = module.lightstep_aurora_dashboard.dashboard_url
   description = "Lightstep AWS Aurora Dashboard URL"
 }
+output "lightstep_billing_dashboard_url" {
+  value       = module.lightstep_billing_dashboard.dashboard_url
+  description = "Lightstep AWS BILLING Dashboard URL"
+}
