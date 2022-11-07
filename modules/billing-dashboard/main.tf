@@ -28,11 +28,11 @@ resource "lightstep_metric_dashboard" "aws_billing_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys               = ["Currency",]
+        keys               = ["Currency", ]
       }
 
     }
-    
+
 
   }
 
