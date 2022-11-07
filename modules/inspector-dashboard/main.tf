@@ -10,7 +10,7 @@ terraform {
 
 resource "lightstep_metric_dashboard" "aws_inspector_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS INSPECTOR"
+  dashboard_name = "AWS Inspector"
 
   chart {
     name = "Total Findings"
