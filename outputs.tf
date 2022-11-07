@@ -71,8 +71,3 @@ output "lightstep_cloudwatchsynthetics_dashboard_url" {
   value       = module.lightstep_cloudwatchsynthetics_dashboard.dashboard_url
   description = "Lightstep AWS CLOUDWATCHSYNTHETICS Dashboard URL"
 }
-
-output "lightstep_cloudwatchsynthetics_dashboard_url" {
-  value       = module.lightstep_cloudwatchsynthetics_dashboard.dashboard_url
-  description = "Lightstep AWS CLOUDWATCHSYNTHETICS Dashboard URL"
-}
