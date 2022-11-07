@@ -67,3 +67,7 @@ output "lightstep_aurora_dashboard_url" {
   value       = module.lightstep_aurora_dashboard.dashboard_url
   description = "Lightstep AWS Aurora Dashboard URL"
 }
+output "lightstep_cloudfront_dashboard_url" {
+  value       = module.lightstep_cloudfront_dashboard.dashboard_url
+  description = "Lightstep AWS CLOUDFRONT Dashboard URL"
+}
