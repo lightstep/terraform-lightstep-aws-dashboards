@@ -28,7 +28,7 @@ resource "lightstep_metric_dashboard" "aws_cloudfront_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys               = ["Region","DistributionId"]
+        keys               = ["Region","DistributionId", ]
       }
 
     }
@@ -51,7 +51,7 @@ resource "lightstep_metric_dashboard" "aws_cloudfront_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys               = ["Region","DistributionId"]
+        keys               = ["Region","DistributionId", ]
       }
 
     }
@@ -67,7 +67,7 @@ resource "lightstep_metric_dashboard" "aws_cloudfront_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys               = ["Region","DistributionId",]
+        keys               = ["Region","DistributionId", ]
       }
 
     }
@@ -90,7 +90,7 @@ resource "lightstep_metric_dashboard" "aws_cloudfront_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys               = ["Region","DistributionId"]
+        keys               = ["Region","DistributionId", ]
       }
 
     }
@@ -106,7 +106,7 @@ resource "lightstep_metric_dashboard" "aws_cloudfront_dashboard" {
 
       group_by {
         aggregation_method = "sum"
-        keys               = ["Region","DistributionId"]
+        keys               = ["Region","DistributionId", ]
       }
 
     }
