@@ -36,7 +36,7 @@ resource "lightstep_metric_dashboard" "aws_cloudfront_dashboard" {
   }
 
   chart {
-    name = "4 xx Error Rate"
+    name = "4xx Error Rate"
     rank = "1"
     type = "timeseries"
 
@@ -61,7 +61,7 @@ resource "lightstep_metric_dashboard" "aws_cloudfront_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.cloudfront.5_xx_error_rate_count"
+      metric              = "aws.cloudfront.5xx_error_rate_count"
       timeseries_operator = "delta"
 
 
