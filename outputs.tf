@@ -69,5 +69,5 @@ output "lightstep_aurora_dashboard_url" {
 }
 output "lightstep_natgateway_dashboard_url" {
   value       = module.lightstep_natgateway_dashboard.dashboard_url
-  description = "Lightstep AWS NATGATEWAY Dashboard URL"
+  description = "Lightstep AWS NATGateway Dashboard URL"
 }
