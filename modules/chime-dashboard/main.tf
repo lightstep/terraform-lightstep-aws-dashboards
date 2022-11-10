@@ -52,7 +52,7 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
   }
 
   chart {
-    name = "Attendee Audio"
+    name = "Attendee Audio Drops"
     rank = "1"
     type = "timeseries"
 
@@ -75,7 +75,7 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
   }
 
   chart {
-    name = "Attendee Content"
+    name = "Attendee Content Drops"
     rank = "2"
     type = "timeseries"
 
@@ -98,7 +98,7 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
   }
 
   chart {
-    name = "Meeting SQS"
+    name = "Meeting SQS Errors"
     rank = "3"
     type = "timeseries"
 
@@ -121,7 +121,7 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
   }
 
   chart {
-    name = "Meeting SNS"
+    name = "Meeting SNS Errors"
     rank = "4"
     type = "timeseries"
 
