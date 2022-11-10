@@ -87,3 +87,8 @@ output "lightstep_natgateway_dashboard_url" {
   value       = module.lightstep_natgateway_dashboard.dashboard_url
   description = "Lightstep AWS NATGateway Dashboard URL"
 }
+
+output "lightstep_chatbot_dashboard_url" {
+  value       = module.lightstep_chatbot_dashboard.dashboard_url
+  description = "Lightstep AWS Chatbot Dashboard URL"
+}
