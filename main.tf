@@ -124,3 +124,8 @@ module "lightstep_chatbot_dashboard" {
   source            = "./modules/chatbot-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_chime_dashboard" {
+  source            = "./modules/chime-dashboard"
+  lightstep_project = var.lightstep_project
+}
