@@ -93,6 +93,11 @@ output "lightstep_amplify_dashboard_url" {
   description = "Lightstep AWS Amplify Dashboard URL"
 }
 
+output "lightstep_cloudtrail_dashboard_url" {
+  value       = module.lightstep_cloudtrail_dashboard.dashboard_url
+  description = "Lightstep AWS CloudTrail Dashboard URL"
+}
+
 output "lightstep_backup_dashboard_url" {
   value       = module.lightstep_nbackup_dashboard.dashboard_url
   description = "Lightstep AWS Backup Dashboard URL"
