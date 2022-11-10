@@ -110,7 +110,27 @@ module "lightstep_natgateway_dashboard" {
   lightstep_project = var.lightstep_project
 }
 
+module "lightstep_amplify_dashboard" {
+  source            = "./modules/amplify-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_cloudtrail_dashboard" {
+  source            = "./modules/cloudtrail-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_backup_dashboard" {
+  source            = "./modules/backup-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
 module "lightstep_chatbot_dashboard" {
   source            = "./modules/chatbot-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_chime_dashboard" {
+  source            = "./modules/chime-dashboard"
   lightstep_project = var.lightstep_project
 }
