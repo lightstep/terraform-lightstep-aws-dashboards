@@ -186,10 +186,9 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
 
     }
 
-}
+  }
 
-
-chart {
+  chart {
     name = "Number of Restore Jobs"
     rank = "2"
     type = "timeseries"
@@ -346,5 +345,6 @@ chart {
     }
 
   }
+
 
 }
