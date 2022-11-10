@@ -22,7 +22,7 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "aws.chatbot.events_throttled_count"
+      metric              = "aws.chatbot.events_throttled_sum"
       timeseries_operator = "delta"
 
 
@@ -38,7 +38,7 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "aws.chatbot.events_processed_count"
+      metric              = "aws.chatbot.events_processed_sum"
       timeseries_operator = "delta"
 
 
@@ -61,7 +61,7 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.chatbot.unsupported_events_count"
+      metric              = "aws.chatbot.unsupported_events_sum"
       timeseries_operator = "delta"
 
 
@@ -84,7 +84,7 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.chatbot.message_delivery_success_count"
+      metric              = "aws.chatbot.message_delivery_success_sum"
       timeseries_operator = "delta"
 
 
@@ -100,7 +100,7 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.chatbot.message_delivery_failure_count"
+      metric              = "aws.chatbot.message_delivery_failure_sum"
       timeseries_operator = "delta"
 
 
