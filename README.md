@@ -32,6 +32,7 @@ Each AWS resource has an associated module that will create Lightstep dashboards
 * __Route53__ (module: [`route53-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/route53-dashboard))
 * __Inspector__ (module: [`inspector-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/inspector-dashboard))
 * __NATGateway__ (module: [`natgateway-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/natgateway-dashboard))
+* __Chatbot__ (module: [`chatbot-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/chatbot-dashboard))
 
 
 ## How to Use This Module
