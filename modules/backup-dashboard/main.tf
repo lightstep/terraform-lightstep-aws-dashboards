@@ -22,7 +22,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_backup_jobs_created_count"
+      metric              = "aws.backup.number_of_backup_jobs_created_sum"
       timeseries_operator = "delta"
 
 
@@ -39,7 +39,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_backup_jobs_pending_count"
+      metric              = "aws.backup.number_of_backup_jobs_pending_sum"
       timeseries_operator = "delta"
 
 
@@ -56,7 +56,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_backup_jobs_running_count"
+      metric              = "aws.backup.number_of_backup_jobs_running_sum"
       timeseries_operator = "delta"
 
 
@@ -72,7 +72,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_backup_jobs_completed_count"
+      metric              = "aws.backup.number_of_backup_jobs_completed_sum"
       timeseries_operator = "delta"
 
 
@@ -88,7 +88,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_backup_jobs_failed_count"
+      metric              = "aws.backup.number_of_backup_jobs_failed_sum"
       timeseries_operator = "delta"
 
 
@@ -104,7 +104,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_backup_jobs_expired_count"
+      metric              = "aws.backup.number_of_backup_jobs_expired_sum"
       timeseries_operator = "delta"
 
 
@@ -127,7 +127,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_copy_jobs_created_count"
+      metric              = "aws.backup.number_of_copy_jobs_created_sum"
       timeseries_operator = "delta"
 
 
@@ -143,7 +143,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_copy_jobs_running_count"
+      metric              = "aws.backup.number_of_copy_jobs_running_sum"
       timeseries_operator = "delta"
 
 
@@ -159,7 +159,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_copy_jobs_completed_count"
+      metric              = "aws.backup.number_of_copy_jobs_completed_sum"
       timeseries_operator = "delta"
 
 
@@ -175,7 +175,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_copy_jobs_failed_count"
+      metric              = "aws.backup.number_of_copy_jobs_failed_sum"
       timeseries_operator = "delta"
 
 
@@ -198,7 +198,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_restore_jobs_pending_count"
+      metric              = "aws.backup.number_of_restore_jobs_pending_sum"
       timeseries_operator = "delta"
 
 
@@ -214,7 +214,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_restore_jobs_running_count"
+      metric              = "aws.backup.number_of_restore_jobs_running_sum"
       timeseries_operator = "delta"
 
 
@@ -230,7 +230,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_restore_jobs_completed_count"
+      metric              = "aws.backup.number_of_restore_jobs_completed_sum"
       timeseries_operator = "delta"
 
 
@@ -246,7 +246,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_restore_jobs_failed_count"
+      metric              = "aws.backup.number_of_restore_jobs_failed_sum"
       timeseries_operator = "delta"
 
 
@@ -269,7 +269,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_recovery_points_completed_count"
+      metric              = "aws.backup.number_of_recovery_points_completed_sum"
       timeseries_operator = "delta"
 
 
@@ -285,7 +285,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_recovery_points_partial_count"
+      metric              = "aws.backup.number_of_recovery_points_partial_sum"
       timeseries_operator = "delta"
 
 
@@ -301,7 +301,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_recovery_points_expired_count"
+      metric              = "aws.backup.number_of_recovery_points_expired_sum"
       timeseries_operator = "delta"
 
 
@@ -317,7 +317,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_recovery_points_deleting_count"
+      metric              = "aws.backup.number_of_recovery_points_deleting_sum"
       timeseries_operator = "delta"
 
 
@@ -333,7 +333,7 @@ resource "lightstep_metric_dashboard" "aws_backup_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.backup.number_of_recovery_points_cold_count"
+      metric              = "aws.backup.number_of_recovery_points_cold_sum"
       timeseries_operator = "delta"
 
 
