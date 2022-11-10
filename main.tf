@@ -107,6 +107,7 @@ module "lightstep_natgateway_dashboard" {
 
 module "lightstep_amplify_dashboard" {
   source            = "./modules/amplify-dashboard"
+  lightstep_project = var.lightstep_project
 }
 
 module "lightstep_chatbot_dashboard" {
