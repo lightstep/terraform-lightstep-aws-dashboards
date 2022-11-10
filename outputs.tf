@@ -112,3 +112,8 @@ output "lightstep_cloudhsm_dashboard_url" {
   value       = module.lightstep_cloudhsm_dashboard.dashboard_url
   description = "Lightstep AWS CloudHSM Dashboard URL"
 }
+
+output "lightstep_chime_dashboard_url" {
+  value       = module.lightstep_chime_dashboard.dashboard_url
+  description = "Lightstep AWS Chime Dashboard URL"
+}

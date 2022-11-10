@@ -36,6 +36,7 @@ Each AWS resource has an associated module that will create Lightstep dashboards
 * __Backup__ (module: [`backup-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/backup-dashboard))
 * __Chatbot__ (module: [`chatbot-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/chatbot-dashboard))
 * __CloudHSM__ (module: [`cloudhsm-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/cloudhsm-dashboard))
+* __Chime__ (module: [`chime-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/chime-dashboard))
 
 ## How to Use This Module
 
