@@ -107,6 +107,7 @@ module "lightstep_natgateway_dashboard" {
 
 module "lightstep_backup_dashboard" {
   source            = "./modules/backup-dashboard"
+  lightstep_project = var.lightstep_project
 }
 
 module "lightstep_chatbot_dashboard" {
