@@ -72,3 +72,17 @@ output "lightstep_route53_dashboard_url" {
   value       = module.lightstep_route53_dashboard.dashboard_url
   description = "Lightstep AWS Route 53 Dashboard URL"
 }
+
+output "lightstep_cloudfront_dashboard_url" {
+  value       = module.lightstep_cloudfront_dashboard.dashboard_url
+  description = "Lightstep AWS CLOUDFRONT Dashboard URL"
+
+output "lightstep_inspector_dashboard_url" {
+  value       = module.lightstep_inspector_dashboard.dashboard_url
+  description = "Lightstep AWS Inspector Dashboard URL"
+}
+
+output "lightstep_natgateway_dashboard_url" {
+  value       = module.lightstep_natgateway_dashboard.dashboard_url
+  description = "Lightstep AWS NATGateway Dashboard URL"
+}

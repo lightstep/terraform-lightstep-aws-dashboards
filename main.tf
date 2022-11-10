@@ -89,3 +89,18 @@ module "lightstep_route53_dashboard" {
   source            = "./modules/route53-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_cloudfront_dashboard" {
+  source            = "./modules/cloudfront-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_inspector_dashboard" {
+  source            = "./modules/inspector-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_natgateway_dashboard" {
+  source            = "./modules/natgateway-dashboard"
+  lightstep_project = var.lightstep_project
+}
