@@ -22,7 +22,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.requests_count"
+      metric              = "aws.amplify.requests_sum"
       timeseries_operator = "delta"
 
 
@@ -45,7 +45,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.bytes_downloaded_count"
+      metric              = "aws.amplify.bytes_downloaded_sum"
       timeseries_operator = "delta"
 
 
@@ -61,7 +61,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.bytes_uploaded_count"
+      metric              = "aws.amplify.bytes_uploaded_sum"
       timeseries_operator = "delta"
 
 
@@ -84,7 +84,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.4_xx_errors_rate_count"
+      metric              = "aws.amplify.4xx_errors_rate_sum"
       timeseries_operator = "delta"
 
 
@@ -100,7 +100,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.5xx_errors_rate_count"
+      metric              = "aws.amplify.5xx_errors_rate_sum"
       timeseries_operator = "delta"
 
 
