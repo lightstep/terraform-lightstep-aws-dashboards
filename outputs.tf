@@ -92,3 +92,8 @@ output "lightstep_cloudtrail_dashboard_url" {
   value       = module.lightstep_cloudtrail_dashboard.dashboard_url
   description = "Lightstep AWS CloudTrail Dashboard URL"
 }
+
+output "lightstep_chatbot_dashboard_url" {
+  value       = module.lightstep_chatbot_dashboard.dashboard_url
+  description = "Lightstep AWS Chatbot Dashboard URL"
+}
