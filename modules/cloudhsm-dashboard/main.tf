@@ -13,7 +13,7 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
   dashboard_name = "AWS CloudHSM"
 
   chart {
-    name = "Hsm Session Count"
+    name = "HSM Session Count"
     rank = "0"
     type = "timeseries"
 
@@ -36,31 +36,8 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
   }
 
   chart {
-    name = "Hsm Session Count"
+    name = "HSM Temperature"
     rank = "1"
-    type = "timeseries"
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_session_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "Hsm Temperature"
-    rank = "2"
     type = "timeseries"
 
     query {
@@ -68,12 +45,28 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.cloudhsm.hsm_temperature_sum"
-      timeseries_operator = "delta"
+      metric              = "aws.cloudhsm.hsm_temperature_max"
+      timeseries_operator = "last"
 
 
       group_by {
-        aggregation_method = "sum"
+        aggregation_method = "max"
+        keys               = []
+      }
+
+    }
+
+    query {
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.cloudhsm.hsm_temperature_min"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "min"
         keys               = []
       }
 
@@ -82,8 +75,8 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
   }
 
   chart {
-    name = "Hsm Keys Session Occupied"
-    rank = "3"
+    name = "HSM Keys Session Occupied"
+    rank = "2"
     type = "timeseries"
 
     query {
@@ -105,8 +98,8 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
   }
 
   chart {
-    name = "Hsm Keys Token Occupied"
-    rank = "4"
+    name = "HSM Keys Token Occupied"
+    rank = "3"
     type = "timeseries"
 
     query {
@@ -128,8 +121,8 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
   }
 
   chart {
-    name = "Hsm Ssl Ctxs Occupied"
-    rank = "5"
+    name = "HSM SSL CTXs Occupied"
+    rank = "4"
     type = "timeseries"
 
     query {
@@ -151,8 +144,8 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
   }
 
   chart {
-    name = "Hsm Users Available"
-    rank = "6"
+    name = "HSM Users Available"
+    rank = "5"
     type = "timeseries"
 
     query {
@@ -161,7 +154,7 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
       hidden     = false
 
       metric              = "aws.cloudhsm.hsm_users_available_sum"
-      timeseries_operator = "delta"
+      timeseries_operator = "last"
 
 
       group_by {
@@ -174,8 +167,8 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
   }
 
   chart {
-    name = "Hsm Users Max"
-    rank = "7"
+    name = "HSM Users Max"
+    rank = "6"
     type = "timeseries"
 
     query {
@@ -183,12 +176,12 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.cloudhsm.hsm_users_max_sum"
-      timeseries_operator = "delta"
+      metric              = "aws.cloudhsm.hsm_users_max_max"
+      timeseries_operator = "last"
 
 
       group_by {
-        aggregation_method = "sum"
+        aggregation_method = "max"
         keys               = []
       }
 
