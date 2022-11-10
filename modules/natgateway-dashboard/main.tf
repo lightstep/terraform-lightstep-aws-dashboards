@@ -8,12 +8,12 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
+resource "lightstep_metric_dashboard" "aws_natgateway_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS RDS"
+  dashboard_name = "AWS NATGateway"
 
   chart {
-    name = "CPU Utilization"
+    name = "Bytes In From Destination"
     rank = "0"
     type = "timeseries"
 
@@ -22,13 +22,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.cpu_utilization_count"
+      metric              = "aws.natgateway.bytes_in_from_destination_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -38,13 +38,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.replica_lag_count"
+      metric              = "aws.natgateway.bytes_out_to_source_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -52,7 +52,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Database Connections"
+    name = "Bytes In From Source"
     rank = "1"
     type = "timeseries"
 
@@ -61,13 +61,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.database_connections_count"
+      metric              = "aws.natgateway.bytes_in_from_source_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -77,13 +77,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.disk_queue_depth_count"
+      metric              = "aws.natgateway.bytes_out_to_destination_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -91,7 +91,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Freeable Memory"
+    name = "Packets In From Destination"
     rank = "2"
     type = "timeseries"
 
@@ -100,13 +100,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.freeable_memory_count"
+      metric              = "aws.natgateway.packets_in_from_destination_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -116,13 +116,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.free_storage_space_count"
+      metric              = "aws.natgateway.packets_out_to_source_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -130,7 +130,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Read IOPS"
+    name = "Packets In From Source"
     rank = "3"
     type = "timeseries"
 
@@ -139,13 +139,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.read_iops_count"
+      metric              = "aws.natgateway.packets_in_from_source_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -155,13 +155,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.write_iops_count"
+      metric              = "aws.natgateway.packets_out_to_destination_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -169,7 +169,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Read Latency"
+    name = "Idle Timeout Count"
     rank = "4"
     type = "timeseries"
 
@@ -178,29 +178,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.read_latency_count"
+      metric              = "aws.natgateway.idle_timeout_count_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.write_latency_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -208,7 +192,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Read Throughput"
+    name = "Packets Drop Count"
     rank = "5"
     type = "timeseries"
 
@@ -217,29 +201,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.read_throughput_count"
+      metric              = "aws.natgateway.packets_drop_count_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.write_throughput_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -247,7 +215,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Network Receive Throughput"
+    name = "Error Port Allocation"
     rank = "6"
     type = "timeseries"
 
@@ -256,29 +224,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.network_receive_throughput_count"
+      metric              = "aws.natgateway.error_port_allocation_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.network_transmit_throughput_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -286,7 +238,7 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
   }
 
   chart {
-    name = "Swap Usage"
+    name = "Active Connection Count"
     rank = "7"
     type = "timeseries"
 
@@ -295,13 +247,13 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.swap_usage_count"
+      metric              = "aws.natgateway.active_connection_count_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
@@ -311,52 +263,29 @@ resource "lightstep_metric_dashboard" "aws_rds_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.bin_log_disk_usage_count"
+      metric              = "aws.natgateway.connection_attempt_count_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-  }
-
-  chart {
-    name = "CPU Credit Usage"
-    rank = "8"
-    type = "timeseries"
-
-    query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.cpu_credit_usage_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
 
     query {
-      query_name = "b"
+      query_name = "c"
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.rds.cpu_credit_balance_count"
+      metric              = "aws.natgateway.connection_established_count_count"
       timeseries_operator = "delta"
 
 
       group_by {
         aggregation_method = "sum"
-        keys               = []
+        keys               = ["NatGatewayId", ]
       }
 
     }
