@@ -22,7 +22,7 @@ resource "lightstep_metric_dashboard" "aws_cloudtrail_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.cloudtrail.units_count"
+      metric              = "aws.cloudtrail.units_sum"
       timeseries_operator = "delta"
 
 
@@ -45,7 +45,7 @@ resource "lightstep_metric_dashboard" "aws_cloudtrail_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.cloudtrail.total_data_retained_count"
+      metric              = "aws.cloudtrail.total_data_retained_sum"
       timeseries_operator = "delta"
 
 
