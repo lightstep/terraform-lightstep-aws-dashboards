@@ -10,7 +10,7 @@ terraform {
 
 resource "lightstep_metric_dashboard" "aws_route53_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS ROUTE53"
+  dashboard_name = "AWS Route53"
 
   chart {
     name = "Health Check Percentage Healthy"
@@ -22,7 +22,7 @@ resource "lightstep_metric_dashboard" "aws_route53_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.route53.health_check_percentage_healthy_count"
+      metric              = "aws.route53.health_check_percentage_healthy_sum"
       timeseries_operator = "delta"
 
 
@@ -38,7 +38,7 @@ resource "lightstep_metric_dashboard" "aws_route53_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.route53.child_health_check_healthy_count_count"
+      metric              = "aws.route53.child_health_check_healthy_count_sum"
       timeseries_operator = "delta"
 
 
@@ -61,7 +61,7 @@ resource "lightstep_metric_dashboard" "aws_route53_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.route53.connection_time_count"
+      metric              = "aws.route53.connection_time_sum"
       timeseries_operator = "delta"
 
 
@@ -77,7 +77,7 @@ resource "lightstep_metric_dashboard" "aws_route53_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.route53.time_to_first_byte_count"
+      metric              = "aws.route53.time_to_first_byte_sum"
       timeseries_operator = "delta"
 
 
@@ -100,7 +100,7 @@ resource "lightstep_metric_dashboard" "aws_route53_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.route53.health_check_status_count"
+      metric              = "aws.route53.health_check_status_sum"
       timeseries_operator = "delta"
 
 
@@ -123,7 +123,7 @@ resource "lightstep_metric_dashboard" "aws_route53_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.route53.ssl_handshake_time_count"
+      metric              = "aws.route53.ssl_handshake_time_sum"
       timeseries_operator = "delta"
 
 
