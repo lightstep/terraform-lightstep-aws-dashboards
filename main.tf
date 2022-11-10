@@ -104,3 +104,8 @@ module "lightstep_natgateway_dashboard" {
   source            = "./modules/natgateway-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_amplify_dashboard" {
+  source            = "./modules/amplify-dashboard"
+  lightstep_project = var.lightstep_project
+}
