@@ -1,5 +1,14 @@
+terraform {
+  required_providers {
+    lightstep = {
+      source  = "lightstep/lightstep"
+      version = "~> 1.70.9"
+    }
+  }
+  required_version = ">= v1.0.11"
+}
 
-resource "lightstep_dashboard" "exported_dashboard" {
+resource "lightstep_dashboard" "aws_rds_dashboard" {
   project_name   = var.project
   dashboard_name = "AWS RDS"
 
