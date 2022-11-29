@@ -135,27 +135,3 @@ module "lightstep_chime_dashboard" {
   lightstep_project = var.lightstep_project
 }
 
-module "lightstep_rds_dashboard" {
-  source            = "./modules/rds-dashboard"
-  lightstep_project = var.lightstep_project
-}
-
-module "lightstep_rds_dashboard" {
-  source            = "./modules/rds-dashboard"
-  lightstep_project = var.lightstep_project
-}
-
-module "lightstep_rds_dashboard" {
-  source            = "./modules/rds-dashboard"
-  lightstep_project = var.lightstep_project
-}
-
-module "lightstep_rds_dashboard" {
-  source            = "./modules/rds-dashboard"
-  lightstep_project = var.lightstep_project
-}
-
-module "lightstep_rds_dashboard" {
-  source            = "./modules/rds-dashboard"
-  lightstep_project = var.lightstep_project
-}
