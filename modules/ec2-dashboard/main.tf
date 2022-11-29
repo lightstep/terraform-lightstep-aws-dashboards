@@ -27,7 +27,7 @@ resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
 
       group_by {
         aggregation_method = "max"
-        keys               = []
+        keys               = ["InstanceId", ]
       }
 
     }
