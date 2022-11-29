@@ -1,6 +1,6 @@
 
 resource "lightstep_dashboard" "exported_dashboard" {
-  project_name = var.project
+  project_name   = var.project
   dashboard_name = "AWS RDS"
 
   chart {
@@ -9,10 +9,10 @@ resource "lightstep_dashboard" "exported_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.cpu_utilization_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.cpu_utilization_count | reduce sum | group_by [], sum;
@@ -21,10 +21,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.failed_sql_server_agent_jobs_count_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.failed_sql_server_agent_jobs_count_count | reduce sum | group_by [], sum;
@@ -40,17 +40,17 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = "metric aws.rds.database_connections_max | reduce max | group_by [], max"
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.rds.database_connections_max | reduce max | group_by [], max"
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.disk_queue_depth_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.disk_queue_depth_count | reduce sum | group_by [], sum;
@@ -66,10 +66,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.freeable_memory_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.freeable_memory_count | reduce sum | group_by [], sum;
@@ -78,10 +78,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.free_storage_space_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.free_storage_space_count | reduce sum | group_by [], sum;
@@ -97,10 +97,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.read_iops_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.read_iops_count | reduce sum | group_by [], sum;
@@ -109,10 +109,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.write_iops_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.write_iops_count | reduce sum | group_by [], sum;
@@ -121,10 +121,10 @@ EOT
     }
 
     query {
-      query_name          = "c"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "c"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.burst_balance_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.burst_balance_count | reduce sum | group_by [], sum;
@@ -140,10 +140,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.read_latency_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.read_latency_count | reduce sum | group_by [], sum;
@@ -152,10 +152,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.write_latency_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.write_latency_count | reduce sum | group_by [], sum;
@@ -171,10 +171,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.read_throughput_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.read_throughput_count | reduce sum | group_by [], sum;
@@ -183,10 +183,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.write_throughput_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.write_throughput_count | reduce sum | group_by [], sum;
@@ -202,10 +202,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.network_receive_throughput_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.network_receive_throughput_count | reduce sum | group_by [], sum;
@@ -214,10 +214,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.network_transmit_throughput_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.network_transmit_throughput_count | reduce sum | group_by [], sum;
@@ -233,10 +233,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.swap_usage_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.swap_usage_count | reduce sum | group_by [], sum;
@@ -245,10 +245,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.bin_log_disk_usage_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.bin_log_disk_usage_count | reduce sum | group_by [], sum;
@@ -264,10 +264,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.cpu_credit_usage_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.cpu_credit_usage_count | reduce sum | group_by [], sum;
@@ -276,10 +276,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.cpu_credit_balance_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.cpu_credit_balance_count | reduce sum | group_by [], sum;
@@ -295,10 +295,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.oldest_replication_slot_lag_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.oldest_replication_slot_lag_count | reduce sum | group_by [], sum;
@@ -307,10 +307,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.replica_lag_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.replica_lag_count | reduce sum | group_by [], sum;
@@ -326,10 +326,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.oldest_replication_slot_lag_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.oldest_replication_slot_lag_count | reduce sum | group_by [], sum;
@@ -338,10 +338,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.replica_lag_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.replica_lag_count | reduce sum | group_by [], sum;
@@ -357,10 +357,10 @@ EOT
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.maximum_used_transaction_i_ds_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.maximum_used_transaction_i_ds_count | reduce sum | group_by [], sum;
@@ -369,10 +369,10 @@ EOT
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = <<EOT
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
 with
   a = metric aws.rds.transaction_logs_generation_sum | reduce sum | group_by [], sum;
   b = metric aws.rds.transaction_logs_generation_count | reduce sum | group_by [], sum;
