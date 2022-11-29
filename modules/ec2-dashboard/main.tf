@@ -25,14 +25,6 @@ resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
       metric              = "aws.ec2.cpu_utilization_max"
       timeseries_operator = "last"
 
-      include_filters = [
-        {
-          key   = "cloud.region"
-          value = "us-east-1"
-        },
-      ]
-
-
       group_by {
         aggregation_method = "max"
         keys               = []
@@ -55,14 +47,6 @@ resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
       metric              = "aws.ec2.cpu_credit_usage_max"
       timeseries_operator = "last"
 
-      include_filters = [
-        {
-          key   = "cloud.region"
-          value = "us-east-1"
-        },
-      ]
-
-
       group_by {
         aggregation_method = "max"
         keys               = ["InstanceId", ]
@@ -77,14 +61,6 @@ resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
 
       metric              = "aws.ec2.cpu_credit_balance_max"
       timeseries_operator = "last"
-
-      include_filters = [
-        {
-          key   = "cloud.region"
-          value = "us-east-1"
-        },
-      ]
-
 
       group_by {
         aggregation_method = "max"
