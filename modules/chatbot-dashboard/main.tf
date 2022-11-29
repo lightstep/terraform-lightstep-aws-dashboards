@@ -27,7 +27,7 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
 
 
       group_by {
-        aggregation_method = "delta"
+        aggregation_method = "sum"
         keys               = []
       }
 
