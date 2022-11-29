@@ -22,7 +22,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.application_elb.request_count_count"
+      metric              = "aws.applicationelb.request_count_count"
       timeseries_operator = "delta"
 
 
@@ -45,7 +45,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "aws.application_elb.http_code_elb_5xx_count_count"
+      metric              = "aws.applicationelb.http_code_elb_5xx_count_count"
       timeseries_operator = "rate"
 
 
@@ -61,7 +61,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "aws.application_elb.http_code_elb_4xx_count_count"
+      metric              = "aws.applicationelb.http_code_elb_4xx_count_count"
       timeseries_operator = "rate"
 
 
@@ -84,7 +84,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.application_elb.active_connection_count_count"
+      metric              = "aws.applicationelb.active_connection_count_count"
       timeseries_operator = "delta"
 
       group_by {
@@ -99,7 +99,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.application_elb.new_connection_count_count"
+      metric              = "aws.applicationelb.new_connection_count_count"
       timeseries_operator = "delta"
 
 
@@ -122,7 +122,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "aws.application_elb.consumed_lcus_max"
+      metric              = "aws.applicationelb.consumed_lcus_max"
       timeseries_operator = "last"
 
 
@@ -138,7 +138,7 @@ resource "lightstep_metric_dashboard" "aws_app_elb_dashboard" {
       display    = "line"
       hidden     = false
 
-      metric              = "aws.application_elb.processed_bytes_max"
+      metric              = "aws.applicationelb.processed_bytes_max"
       timeseries_operator = "last"
 
 
