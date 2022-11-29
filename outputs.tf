@@ -117,3 +117,28 @@ output "lightstep_chime_dashboard_url" {
   value       = module.lightstep_chime_dashboard.dashboard_url
   description = "Lightstep AWS Chime Dashboard URL"
 }
+
+output "lightstep_rds_dashboard_url" {
+  value       = module.lightstep_rds_dashboard.dashboard_url
+  description = "Lightstep AWS RDS Dashboard URL"
+}
+
+output "lightstep_rds_dashboard_url" {
+  value       = module.lightstep_rds_dashboard.dashboard_url
+  description = "Lightstep AWS RDS Dashboard URL"
+}
+
+output "lightstep_rds_dashboard_url" {
+  value       = module.lightstep_rds_dashboard.dashboard_url
+  description = "Lightstep AWS RDS Dashboard URL"
+}
+
+output "lightstep_rds_dashboard_url" {
+  value       = module.lightstep_rds_dashboard.dashboard_url
+  description = "Lightstep AWS RDS Dashboard URL"
+}
+
+output "lightstep_rds_dashboard_url" {
+  value       = module.lightstep_rds_dashboard.dashboard_url
+  description = "Lightstep AWS RDS Dashboard URL"
+}

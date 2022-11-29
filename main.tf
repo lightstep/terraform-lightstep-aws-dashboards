@@ -2,7 +2,7 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.60.2"
+      version = "~> 1.70.9"
     }
   }
   required_version = ">= v1.0.11"
@@ -132,5 +132,30 @@ module "lightstep_cloudhsm_dashboard" {
 
 module "lightstep_chime_dashboard" {
   source            = "./modules/chime-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_rds_dashboard" {
+  source            = "./modules/rds-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_rds_dashboard" {
+  source            = "./modules/rds-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_rds_dashboard" {
+  source            = "./modules/rds-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_rds_dashboard" {
+  source            = "./modules/rds-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_rds_dashboard" {
+  source            = "./modules/rds-dashboard"
   lightstep_project = var.lightstep_project
 }
