@@ -2,7 +2,7 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.60.2"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
@@ -27,7 +27,7 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
 
 
       group_by {
-        aggregation_method = "delta"
+        aggregation_method = "sum"
         keys               = []
       }
 
