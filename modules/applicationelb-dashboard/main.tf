@@ -184,7 +184,6 @@ with
 join (a / b), a = 0, b = 0
 EOT
     }
-
     query {
       query_name   = "c"
       display      = "line"
@@ -217,7 +216,6 @@ EOT
       hidden       = false
       query_string = "metric aws.applicationelb.client_tls_negotiation_error_count_sum | delta | group_by [], sum"
     }
-
   }
 
   chart {
@@ -252,7 +250,6 @@ EOT
       hidden       = false
       query_string = "metric aws.applicationelb.rule_evaluations_sum | delta | group_by [], sum"
     }
-
   }
 
   chart {
@@ -308,5 +305,4 @@ EOT
     }
 
   }
-
 }
