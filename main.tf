@@ -2,7 +2,7 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.60.2"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
@@ -127,6 +127,11 @@ module "lightstep_backup_dashboard" {
 
 module "lightstep_chatbot_dashboard" {
   source            = "./modules/chatbot-dashboard"
+  lightstep_project = var.lightstep_project
+}
+
+module "lightstep_cloudhsm_dashboard" {
+  source            = "./modules/cloudhsm-dashboard"
   lightstep_project = var.lightstep_project
 }
 

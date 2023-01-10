@@ -8,12 +8,12 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
+resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS Amplify"
+  dashboard_name = "AWS CloudHSM"
 
   chart {
-    name = "Requests Count"
+    name = "HSM Session Count"
     rank = "0"
     type = "timeseries"
 
@@ -22,7 +22,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.requests_sum"
+      metric              = "aws.cloudhsm.hsm_session_sum"
       timeseries_operator = "delta"
 
 
@@ -36,7 +36,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
   }
 
   chart {
-    name = "Bytes Requests"
+    name = "HSM Temperature"
     rank = "1"
     type = "timeseries"
 
@@ -45,12 +45,12 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.bytes_downloaded_sum"
-      timeseries_operator = "delta"
+      metric              = "aws.cloudhsm.hsm_temperature_max"
+      timeseries_operator = "last"
 
 
       group_by {
-        aggregation_method = "sum"
+        aggregation_method = "max"
         keys               = []
       }
 
@@ -61,7 +61,30 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.bytes_uploaded_sum"
+      metric              = "aws.cloudhsm.hsm_temperature_min"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "min"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "HSM Keys Session Occupied"
+    rank = "2"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.cloudhsm.hsm_keys_session_occupied_sum"
       timeseries_operator = "delta"
 
 
@@ -75,7 +98,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
   }
 
   chart {
-    name = "Errors"
+    name = "HSM Keys Token Occupied"
     rank = "3"
     type = "timeseries"
 
@@ -84,23 +107,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.4xx_errors_rate_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
-    }
-
-    query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.amplify.5xx_errors_rate_sum"
+      metric              = "aws.cloudhsm.hsm_keys_token_occupied_sum"
       timeseries_operator = "delta"
 
 
@@ -114,7 +121,7 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
   }
 
   chart {
-    name = "Lantency"
+    name = "HSM SSL CTXs Occupied"
     rank = "4"
     type = "timeseries"
 
@@ -123,12 +130,58 @@ resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.amplify.latency_max"
+      metric              = "aws.cloudhsm.hsm_ssl_ctxs_occupied_sum"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "HSM Users Available"
+    rank = "5"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.cloudhsm.hsm_users_available_sum"
       timeseries_operator = "last"
 
 
       group_by {
         aggregation_method = "sum"
+        keys               = []
+      }
+
+    }
+
+  }
+
+  chart {
+    name = "HSM Users Max"
+    rank = "6"
+    type = "timeseries"
+
+    query {
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.cloudhsm.hsm_users_max_max"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "max"
         keys               = []
       }
 

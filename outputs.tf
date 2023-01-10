@@ -73,6 +73,7 @@ output "lightstep_athena_dashboard_url" {
   description = "Lightstep AWS Athena Dashboard URL"
 }
 
+
 output "lightstep_route53_dashboard_url" {
   value       = module.lightstep_route53_dashboard.dashboard_url
   description = "Lightstep AWS Route 53 Dashboard URL"
@@ -111,6 +112,11 @@ output "lightstep_backup_dashboard_url" {
 output "lightstep_chatbot_dashboard_url" {
   value       = module.lightstep_chatbot_dashboard.dashboard_url
   description = "Lightstep AWS Chatbot Dashboard URL"
+}
+
+output "lightstep_cloudhsm_dashboard_url" {
+  value       = module.lightstep_cloudhsm_dashboard.dashboard_url
+  description = "Lightstep AWS CloudHSM Dashboard URL"
 }
 
 output "lightstep_chime_dashboard_url" {
