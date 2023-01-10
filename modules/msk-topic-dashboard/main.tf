@@ -8,7 +8,7 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_dashboard" "aws_mks-topic_dashboard" {
+resource "lightstep_dashboard" "aws_mks_topic_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS Kafka Topic"
 
