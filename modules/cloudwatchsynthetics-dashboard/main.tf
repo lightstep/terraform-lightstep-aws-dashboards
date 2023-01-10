@@ -59,7 +59,7 @@ resource "lightstep_metric_dashboard" "aws_cloudwatchsynthetics_dashboard" {
   }
 
   chart {
-    name = "Failed   requests"
+    name = "Failed requests"
     rank = "2"
     type = "timeseries"
 
@@ -82,7 +82,7 @@ resource "lightstep_metric_dashboard" "aws_cloudwatchsynthetics_dashboard" {
   }
 
   chart {
-    name = "2 xx"
+    name = "2xx"
     rank = "3"
     type = "timeseries"
 
@@ -91,7 +91,7 @@ resource "lightstep_metric_dashboard" "aws_cloudwatchsynthetics_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.cloudwatchsynthetics.2_xx_count"
+      metric              = "aws.cloudwatchsynthetics.2xx_count"
       timeseries_operator = "delta"
 
 
@@ -107,7 +107,7 @@ resource "lightstep_metric_dashboard" "aws_cloudwatchsynthetics_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.cloudwatchsynthetics.4_xx_count"
+      metric              = "aws.cloudwatchsynthetics.4xx_count"
       timeseries_operator = "delta"
 
 
@@ -123,7 +123,7 @@ resource "lightstep_metric_dashboard" "aws_cloudwatchsynthetics_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.cloudwatchsynthetics.5_xx_count"
+      metric              = "aws.cloudwatchsynthetics.5xx_count"
       timeseries_operator = "delta"
 
 
