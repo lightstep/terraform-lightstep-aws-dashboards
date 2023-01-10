@@ -2,7 +2,7 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.60.2"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
@@ -77,11 +77,6 @@ module "lightstep_s3_dashboard" {
 
 module "lightstep_efs_dashboard" {
   source            = "./modules/efs-dashboard"
-  lightstep_project = var.lightstep_project
-}
-
-module "lightstep_aurora_dashboard" {
-  source            = "./modules/aurora-dashboard"
   lightstep_project = var.lightstep_project
 }
 
