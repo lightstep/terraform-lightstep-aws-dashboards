@@ -73,6 +73,7 @@ output "lightstep_msk_dashboard_url" {
   description = "Lightstep AWS MSK Dashboard URL"
 }
 
+
 output "lightstep_route53_dashboard_url" {
   value       = module.lightstep_route53_dashboard.dashboard_url
   description = "Lightstep AWS Route 53 Dashboard URL"
@@ -91,4 +92,34 @@ output "lightstep_inspector_dashboard_url" {
 output "lightstep_natgateway_dashboard_url" {
   value       = module.lightstep_natgateway_dashboard.dashboard_url
   description = "Lightstep AWS NATGateway Dashboard URL"
+}
+
+output "lightstep_amplify_dashboard_url" {
+  value       = module.lightstep_amplify_dashboard.dashboard_url
+  description = "Lightstep AWS Amplify Dashboard URL"
+}
+
+output "lightstep_cloudtrail_dashboard_url" {
+  value       = module.lightstep_cloudtrail_dashboard.dashboard_url
+  description = "Lightstep AWS CloudTrail Dashboard URL"
+}
+
+output "lightstep_backup_dashboard_url" {
+  value       = module.lightstep_nbackup_dashboard.dashboard_url
+  description = "Lightstep AWS Backup Dashboard URL"
+}
+
+output "lightstep_chatbot_dashboard_url" {
+  value       = module.lightstep_chatbot_dashboard.dashboard_url
+  description = "Lightstep AWS Chatbot Dashboard URL"
+}
+
+output "lightstep_cloudhsm_dashboard_url" {
+  value       = module.lightstep_cloudhsm_dashboard.dashboard_url
+  description = "Lightstep AWS CloudHSM Dashboard URL"
+}
+
+output "lightstep_chime_dashboard_url" {
+  value       = module.lightstep_chime_dashboard.dashboard_url
+  description = "Lightstep AWS Chime Dashboard URL"
 }
