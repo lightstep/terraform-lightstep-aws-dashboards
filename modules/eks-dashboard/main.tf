@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_eks_dashboard" {
-  project_name = var.lightstep_project
+  project_name   = var.lightstep_project
   dashboard_name = "AWS EKS"
 
   chart {
