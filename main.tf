@@ -134,3 +134,8 @@ module "lightstep_chime_dashboard" {
   source            = "./modules/chime-dashboard"
   lightstep_project = var.lightstep_project
 }
+
+module "lightstep_eks_dashboard" {
+  source            = "./modules/eks-dashboard"
+  lightstep_project = var.lightstep_project
+}

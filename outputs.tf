@@ -123,3 +123,8 @@ output "lightstep_chime_dashboard_url" {
   value       = module.lightstep_chime_dashboard.dashboard_url
   description = "Lightstep AWS Chime Dashboard URL"
 }
+
+output "lightstep_eks_dashboard_url" {
+  value       = module.lightstep_eks_dashboard.dashboard_url
+  description = "Lightstep AWS EKS Dashboard URL"
+}
