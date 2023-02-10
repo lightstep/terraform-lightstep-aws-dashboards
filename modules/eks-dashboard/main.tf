@@ -19,9 +19,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.cluster_failed_node_count | delta | group_by [], sum"
     }
 
@@ -33,9 +33,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.cluster_node_count | delta | group_by [], sum"
     }
 
@@ -47,9 +47,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.namespace_number_of_running_pods_sum | delta | group_by [], sum"
     }
 
@@ -61,9 +61,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.service_number_of_running_pods_sum | delta | group_by [], sum"
     }
 
@@ -75,9 +75,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_cpu_limit_sum | delta | group_by [], sum"
     }
 
@@ -89,9 +89,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_cpu_reserved_capacity_sum | delta | group_by [], sum"
     }
 
@@ -103,9 +103,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_cpu_usage_total_sum | delta | group_by [], sum"
     }
 
@@ -117,9 +117,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_cpu_usage_total_sum | delta | group_by [], sum"
     }
 
@@ -131,9 +131,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_cpu_utilization_sum | delta | group_by [], sum"
     }
 
@@ -145,9 +145,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_cpu_utilization_sum | delta | group_by [], sum"
     }
 
@@ -159,9 +159,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_filesystem_utilization_sum | delta | group_by [], sum"
     }
 
@@ -173,9 +173,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_filesystem_utilization_sum | delta | group_by [], sum"
     }
 
@@ -187,9 +187,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_memory_utilization_sum | delta | group_by [], sum"
     }
 
@@ -201,9 +201,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_memory_reserved_capacity_sum | delta | group_by [], sum"
     }
 
@@ -215,9 +215,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_memory_reserved_capacity_sum | delta | group_by [], sum"
     }
 
@@ -229,9 +229,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_memory_utilization_sum | delta | group_by [], sum"
     }
 
@@ -243,9 +243,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_number_of_running_containers_sum | delta | group_by [], sum"
     }
 
@@ -257,9 +257,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.node_number_of_running_pods_sum | delta | group_by [], sum"
     }
 
@@ -271,9 +271,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_reserved_capacity_sum | delta | group_by [], sum"
     }
 
@@ -285,9 +285,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_reserved_capacity_sum | delta | group_by [], sum"
     }
 
@@ -299,9 +299,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_reserved_capacity_sum | delta | group_by [], sum"
     }
 
@@ -313,9 +313,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_reserved_capacity_sum | delta | group_by [], sum"
     }
 
@@ -327,9 +327,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_utilization_over_pod_limit_sum | delta | group_by [], sum"
     }
 
@@ -341,9 +341,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_utilization_over_pod_limit_sum | delta | group_by [], sum"
     }
 
@@ -355,9 +355,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_utilization_over_pod_limit_sum | delta | group_by [], sum"
     }
 
@@ -369,9 +369,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_utilization_sum | delta | group_by [], sum"
     }
 
@@ -383,9 +383,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_utilization_sum | delta | group_by [], sum"
     }
 
@@ -397,9 +397,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_cpu_utilization_sum | delta | group_by [], sum"
     }
 
@@ -411,9 +411,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_memory_utilization_sum | delta | group_by [], sum"
     }
 
@@ -425,9 +425,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_memory_utilization_sum | delta | group_by [], sum"
     }
 
@@ -439,9 +439,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_memory_utilization_sum | delta | group_by [], sum"
     }
 
@@ -453,9 +453,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_memory_utilization_over_pod_limit_sum | delta | group_by [], sum"
     }
 
@@ -467,9 +467,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_memory_utilization_over_pod_limit_sum | delta | group_by [], sum"
     }
 
@@ -481,9 +481,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_memory_utilization_over_pod_limit_sum | delta | group_by [], sum"
     }
 
@@ -495,9 +495,9 @@ resource "lightstep_dashboard" "aws_eks_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "bar"
-      hidden              = false
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
       query_string = "metric aws.eks.pod_number_of_container_restarts_sum | delta | group_by [], sum"
     }
 
