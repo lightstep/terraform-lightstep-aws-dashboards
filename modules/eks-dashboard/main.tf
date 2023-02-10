@@ -8,7 +8,6 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-
 resource "lightstep_dashboard" "aws_eks_dashboard" {
   project_name = var.lightstep_project
   dashboard_name = "AWS EKS"
