@@ -45,7 +45,7 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_string = "metric aws.eks.node_cpu_limit_sum | delta | group_by [], sum"
     }
 
-     query {
+    query {
       query_name   = "a"
       display      = "bar"
       hidden       = false
@@ -108,7 +108,7 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_string = "metric aws.eks.node_memory_utilization_sum | delta | group_by [], sum"
     }
 
-     query {
+    query {
       query_name   = "a"
       display      = "bar"
       hidden       = false
