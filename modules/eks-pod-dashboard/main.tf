@@ -9,11 +9,11 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
-  project_name  = var.lightstep_project
-  dashboard_name = "AWS EKS POD"
+  project_name   = var.lightstep_project
+  dashboard_name = "AWS EKS Pod"
 
   chart {
-    name = "Number of Running PODS"
+    name = "Number of Running Pods"
     rank = "2"
     type = "timeseries"
 
@@ -27,7 +27,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "Number of Running PODS"
+    name = "Number of Running Pods"
     rank = "3"
     type = "timeseries"
 
@@ -97,7 +97,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "CPU Utilization over POD Limit"
+    name = "CPU Utilization over Pod Limit"
     rank = "22"
     type = "timeseries"
 
@@ -111,7 +111,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "CPU Utilization over POD Limit"
+    name = "CPU Utilization over Pod Limit"
     rank = "23"
     type = "timeseries"
 
@@ -125,7 +125,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "CPU Utilization over POD Limit"
+    name = "CPU Utilization over Pod Limit"
     rank = "24"
     type = "timeseries"
 
@@ -181,7 +181,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "POD memory Utilization"
+    name = "POD Memory Utilization"
     rank = "28"
     type = "timeseries"
 
@@ -195,7 +195,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "POD memory Utilization"
+    name = "Memory Utilization"
     rank = "29"
     type = "timeseries"
 
@@ -209,7 +209,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "POD memory Utilization"
+    name = "Memory Utilization"
     rank = "30"
     type = "timeseries"
 
@@ -223,7 +223,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "POD memory Utilization over POD Limit"
+    name = "Memory Utilization over Pod Limit"
     rank = "31"
     type = "timeseries"
 
@@ -237,7 +237,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "POD memory Utilization over POD Limit"
+    name = "Memory Utilization over Pod Limit"
     rank = "32"
     type = "timeseries"
 
@@ -251,7 +251,7 @@ resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   }
 
   chart {
-    name = "Memory Utilization over POD Limit"
+    name = "Memory Utilization over Pod Limit"
     rank = "33"
     type = "timeseries"
 

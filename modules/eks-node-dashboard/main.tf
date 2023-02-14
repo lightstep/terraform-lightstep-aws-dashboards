@@ -9,11 +9,11 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_eks_node_dashboard" {
-  project_name  = var.lightstep_project
-  dashboard_name = "AWS EKS NODE"
+  project_name   = var.lightstep_project
+  dashboard_name = "AWS EKS Node"
 
   chart {
-    name = "Cluster Failed NODE Count"
+    name = "Cluster Failed Node Count"
     rank = "0"
     type = "timeseries"
 
@@ -27,7 +27,7 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
   }
 
   chart {
-    name = "Cluster NODE Count"
+    name = "Cluster Node Count"
     rank = "1"
     type = "timeseries"
 
