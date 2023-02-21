@@ -18,10 +18,10 @@ resource "lightstep_dashboard" "aws_s3_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = "metric aws.s3.all_requests_max | latest | group_by [], sum"
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.s3.all_requests_max | latest | group_by [], sum"
     }
 
   }
@@ -32,17 +32,17 @@ resource "lightstep_dashboard" "aws_s3_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = "metric aws.s3.bytes_downloaded_max | latest | group_by [], sum"
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.s3.bytes_downloaded_max | latest | group_by [], sum"
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = "metric aws.s3.bytes_uploaded_max | latest | group_by [], sum"
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.s3.bytes_uploaded_max | latest | group_by [], sum"
     }
 
   }
@@ -53,17 +53,17 @@ resource "lightstep_dashboard" "aws_s3_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = "metric aws.s3.first_byte_latency_max | latest | group_by [], sum"
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.s3.first_byte_latency_max | latest | group_by [], sum"
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = "metric aws.s3.total_request_latency_max | latest | group_by [], sum"
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.s3.total_request_latency_max | latest | group_by [], sum"
     }
 
   }
@@ -74,17 +74,17 @@ resource "lightstep_dashboard" "aws_s3_dashboard" {
     type = "timeseries"
 
     query {
-      query_name          = "a"
-      display             = "line"
-      hidden              = false
-      query_string        = "metric aws.s3.5xx_errors_count | delta | group_by [], sum"
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.s3.5xx_errors_count | delta | group_by [], sum"
     }
 
     query {
-      query_name          = "b"
-      display             = "line"
-      hidden              = false
-      query_string        = "metric aws.s3.4xx_errors_count | delta | group_by [], sum"
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.s3.4xx_errors_count | delta | group_by [], sum"
     }
 
   }
