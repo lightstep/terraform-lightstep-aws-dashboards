@@ -1,19 +1,10 @@
-terraform {
-  required_providers {
-    lightstep = {
-      source  = "lightstep/lightstep"
-      version = "~> 1.70.10"
-    }
-  }
-  required_version = ">= v1.0.11"
-}
-
 resource "lightstep_dashboard" "aws_ebs_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS EBS"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS EBS"
+  dashboard_description = "Monitor your EBS Volumes with this dashboard."
 
   chart {
-    name = "VolumeQueueLength"
+    name = "Volume Queue Length"
     rank = "0"
     type = "timeseries"
 
@@ -25,15 +16,14 @@ resource "lightstep_dashboard" "aws_ebs_dashboard" {
 with
   a = metric aws.ebs.volume_queue_length_sum | delta | group_by [], sum;
   b = metric aws.ebs.volume_queue_length_count | delta | group_by [], sum;
-join (a / b), a = 0, b = 0
-
+join (a / b), a=0, b=0
 EOT
     }
 
   }
 
   chart {
-    name = "VolumeTime"
+    name = "Read / Write / Idle Time"
     rank = "1"
     type = "timeseries"
 
@@ -47,8 +37,8 @@ with
   b = metric aws.ebs.volume_total_read_time_count | delta | group_by [], sum;
 join (a / b), a = 0, b = 0
 
-EOT
 
+EOT
     }
 
     query {
@@ -61,8 +51,8 @@ with
   b = metric aws.ebs.volume_total_write_time_count | delta | group_by [], sum;
 join (a / b), a = 0, b = 0
 
-EOT
 
+EOT
     }
 
     query {
@@ -75,14 +65,14 @@ with
   b = metric aws.ebs.volume_total_idle_time_count | delta | group_by [], sum;
 join (a / b), a = 0, b = 0
 
-EOT
 
+EOT
     }
 
   }
 
   chart {
-    name = "VolumeThroughputPercentage"
+    name = "Volume Throughput Percentage"
     rank = "2"
     type = "timeseries"
 
@@ -94,28 +84,15 @@ EOT
 with
   a = metric aws.ebs.volume_throughput_percentage_sum | delta | group_by [], sum;
   b = metric aws.ebs.volume_throughput_percentage_count | delta | group_by [], sum;
-join (a / b), a = 0, b = 0
-
+join (a / b), a=0, b=0
 EOT
     }
+
   }
 
   chart {
-    name = "VolumeConsumedReadWriteOps"
+    name = "Read / Write Ratio (Throughput)"
     rank = "3"
-    type = "timeseries"
-    query {
-      query_name   = "b"
-      display      = "line"
-      hidden       = false
-      query_string = "metric aws.ebs.volume_consumed_read_write_ops_sum | delta | group_by [], sum"
-    }
-
-  }
-
-  chart {
-    name = "VolumeReadBytes/VolumeWriteBytes"
-    rank = "4"
     type = "timeseries"
 
     query {
@@ -125,16 +102,16 @@ EOT
       query_string = <<EOT
 with
   a = metric aws.ebs.volume_read_bytes_sum | delta | group_by [], sum;
-  b = metric aws.ebs.volume_write_bytes_sum| delta | group_by [], sum;
-join (a / b), a = 0, b = 0
-
+  b = metric aws.ebs.volume_write_bytes_sum | delta | group_by [], sum;
+join (a / b), a=0, b=0
 EOT
     }
+
   }
 
   chart {
-    name = "VolumeReadOps / VolumeWriteOps"
-    rank = "5"
+    name = "Read / Write Ratio (Ops)"
+    rank = "4"
     type = "timeseries"
 
     query {
@@ -147,13 +124,15 @@ with
   b = metric aws.ebs.volume_write_ops_sum| delta | group_by [], sum;
 join (a / b), a = 0, b = 0
 
+
 EOT
     }
+
   }
 
   chart {
-    name = "BurstBalance"
-    rank = "6"
+    name = "Burst Balance"
+    rank = "5"
     type = "timeseries"
 
     query {
