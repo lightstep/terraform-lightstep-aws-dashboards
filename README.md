@@ -38,6 +38,8 @@ Each AWS resource has an associated module that will create Lightstep dashboards
 * __Chatbot__ (module: [`chatbot-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/chatbot-dashboard))
 * __CloudHSM__ (module: [`cloudhsm-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/cloudhsm-dashboard))
 * __Chime__ (module: [`chime-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/chime-dashboard))
+* __EKS_NODE__ (module: [`eks-node-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/eks-node-dashboard))
+* __EKS_POD__ (module: [`eks-pod-dashboard`](https://github.com/lightstep/terraform-lightstep-aws-dashboards/tree/master/modules/eks-pod-dashboard))
 
 ## How to Use This Module
 
