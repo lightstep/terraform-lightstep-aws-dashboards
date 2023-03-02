@@ -8,9 +8,11 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_kinesis_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Kinesis"
+
+resource "lightstep_dashboard" "aws_kinesis_dashboard" {
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Kinesis"
+  dashboard_description = ""
 
   chart {
     name = "Incoming Records / Incoming Bytes"
@@ -18,35 +20,17 @@ resource "lightstep_metric_dashboard" "aws_kinesis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.incoming_records_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.incoming_records_sum | delta | group_by [], sum"
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.incoming_bytes_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.incoming_bytes_sum | delta | group_by [], sum"
     }
 
   }
@@ -57,35 +41,17 @@ resource "lightstep_metric_dashboard" "aws_kinesis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.get_records_records_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.get_records_records_count | delta | group_by [], sum"
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.get_records_latency_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.get_records_latency_max | latest | group_by [], sum"
     }
 
   }
@@ -96,19 +62,10 @@ resource "lightstep_metric_dashboard" "aws_kinesis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.get_records_success_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.get_records_success_count | delta | group_by [], sum"
     }
 
   }
@@ -119,35 +76,17 @@ resource "lightstep_metric_dashboard" "aws_kinesis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.write_provisioned_throughput_exceeded_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.write_provisioned_throughput_exceeded_max | latest | group_by [], sum"
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.read_provisioned_throughput_exceeded_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.read_provisioned_throughput_exceeded_max | latest | group_by [], sum"
     }
 
   }
@@ -158,35 +97,17 @@ resource "lightstep_metric_dashboard" "aws_kinesis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.put_records_total_records_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.put_records_total_records_count | delta | group_by [], sum"
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.put_record_latency_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.put_record_latency_max | latest | group_by [], sum"
     }
 
   }
@@ -197,21 +118,13 @@ resource "lightstep_metric_dashboard" "aws_kinesis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.kinesis.put_record_success_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.kinesis.put_record_success_count | delta | group_by [], sum"
     }
 
   }
 
 }
+
