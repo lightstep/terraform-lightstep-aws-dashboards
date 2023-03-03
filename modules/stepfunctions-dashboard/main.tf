@@ -1,16 +1,8 @@
-terraform {
-  required_providers {
-    lightstep = {
-      source  = "lightstep/lightstep"
-      version = "~> 1.70.9"
-    }
-  }
-  required_version = ">= v1.0.11"
-}
 
-resource "lightstep_dashboard" "aws_stepfunctions_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Step Functions"
+resource "lightstep_dashboard" "aws_step_functions_dashboard" {
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Step Functions"
+  dashboard_description = "Monitor AWS Step Functions with this view of execution results."
 
   chart {
     name = "Executions Succeeded"
@@ -40,6 +32,7 @@ with
   a = metric aws.states.execution_time_sum | reduce sum | group_by [], sum;
   b = metric aws.states.execution_time_count | reduce sum | group_by [], sum;
 join (a / b), a = 0, b = 0
+
 EOT
     }
 
