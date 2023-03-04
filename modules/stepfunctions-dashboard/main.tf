@@ -2,15 +2,17 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.70.9"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_dashboard" "aws_stepfunctions_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Step Functions"
+
+resource "lightstep_dashboard" "aws_step_functions_dashboard" {
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Step Functions"
+  dashboard_description = "Monitor AWS Step Functions with this view of execution results."
 
   chart {
     name = "Executions Succeeded"
@@ -21,7 +23,9 @@ resource "lightstep_dashboard" "aws_stepfunctions_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_succeeded_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_succeeded_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -40,6 +44,7 @@ with
   a = metric aws.states.execution_time_sum | reduce sum | group_by [], sum;
   b = metric aws.states.execution_time_count | reduce sum | group_by [], sum;
 join (a / b), a = 0, b = 0
+
 EOT
     }
 
@@ -47,7 +52,9 @@ EOT
       query_name   = "b"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.execution_time_max | reduce max | group_by [], max"
+      query_string = <<EOT
+metric aws.states.execution_time_max | reduce max | group_by [], max
+EOT
     }
 
   }
@@ -61,7 +68,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_started_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_started_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -75,7 +84,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_failed_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_failed_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -89,7 +100,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_timed_out_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_timed_out_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -103,7 +116,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_aborted_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_aborted_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -117,7 +132,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.execution_throttled_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.execution_throttled_sum | delta | group_by [], sum
+EOT
     }
 
   }
