@@ -8,9 +8,11 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS SQS"
+
+resource "lightstep_dashboard" "aws_sqs_dashboard" {
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS SQS"
+  dashboard_description = "A dashboard that offers a visibility of security, durability, and availability hosted queue, so that you can integrate and decouple distributed software systems and components."
 
   chart {
     name = "Number of Messages Sent"
@@ -18,36 +20,23 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.sqs.number_of_messages_sent_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.sqs.number_of_messages_sent_count | delta | group_by [], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.sqs.number_of_messages_received_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.sqs.number_of_messages_received_count | delta | group_by [], sum
+EOT
     }
+
   }
 
   chart {
@@ -56,19 +45,12 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.sqs.approximate_age_of_oldest_message_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.sqs.approximate_age_of_oldest_message_max | latest | group_by [], sum
+EOT
     }
 
   }
@@ -79,35 +61,21 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.sqs.approximate_number_of_messages_visible_count"
-      timeseries_operator = "rate"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.sqs.approximate_number_of_messages_visible_count | rate | group_by [], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.sqs.approximate_number_of_messages_delayed_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.sqs.approximate_number_of_messages_delayed_count | delta | group_by [], sum
+EOT
     }
 
   }
@@ -118,19 +86,12 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.sqs.number_of_empty_receives_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.sqs.number_of_empty_receives_count | delta | group_by [], sum
+EOT
     }
 
   }
@@ -141,21 +102,15 @@ resource "lightstep_metric_dashboard" "aws_sqs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.sqs.sent_message_size_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.sqs.sent_message_size_max | latest | group_by [], sum
+EOT
     }
 
   }
 
 }
+
