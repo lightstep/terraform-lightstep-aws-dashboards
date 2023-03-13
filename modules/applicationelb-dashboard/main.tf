@@ -2,7 +2,7 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.70.9"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
@@ -21,7 +21,9 @@ resource "lightstep_dashboard" "aws_app_elb_dashboard" {
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.request_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.request_count_sum | delta | group_by [], sum
+EOL
     }
 
     query {
@@ -47,28 +49,36 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.http_code_target_5xx_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.http_code_target_5xx_count_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.http_code_target_4xx_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.http_code_target_4xx_count_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "c"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.http_code_target_3xx_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.http_code_target_3xx_count_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "d"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.http_code_target_2xx_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.http_code_target_2xx_count_sum | delta | group_by [], sum
+EOL
     }
 
   }
@@ -82,21 +92,27 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.http_code_elb_3xx_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.http_code_elb_3xx_count_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.http_code_elb_4xx_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.http_code_elb_4xx_count_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "c"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.http_code_elb_5xx_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.http_code_elb_5xx_count_sum | delta | group_by [], sum
+EOL
     }
 
   }
@@ -207,14 +223,18 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.target_tls_negotiation_error_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.target_tls_negotiation_error_count_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.client_tls_negotiation_error_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.client_tls_negotiation_error_count_sum | delta | group_by [], sum
+EOL
     }
   }
 
@@ -227,14 +247,18 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.i_pv_6_request_count_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.i_pv_6_request_count_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.i_pv_6_processed_bytes_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.i_pv_6_processed_bytes_sum | delta | group_by [], sum
+EOL
     }
 
   }
@@ -248,7 +272,9 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.rule_evaluations_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.rule_evaluations_sum | delta | group_by [], sum
+EOL
     }
   }
 
@@ -261,35 +287,45 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.elb_auth_error_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.elb_auth_error_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.elb_auth_failure_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.elb_auth_failure_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "c"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.elb_auth_success_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.elb_auth_success_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "d"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.elb_auth_refresh_token_success_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.elb_auth_refresh_token_success_sum | delta | group_by [], sum
+EOL
     }
 
     query {
       query_name   = "e"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.applicationelb.elb_auth_user_claims_size_exceeded_sum | delta | group_by [], sum"
+      query_string = <<EOL
+metric aws.applicationelb.elb_auth_user_claims_size_exceeded_sum | delta | group_by [], sum
+EOL
     }
 
     query {
