@@ -150,7 +150,9 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.ebs.burst_balance_min | reduce min | group_by [], min"
+      query_string = <<EOL
+metric aws.ebs.burst_balance_min | reduce min | group_by [], min
+EOL
     }
 
   }
