@@ -23,18 +23,14 @@ resource "lightstep_dashboard" "aws_kinesis_dashboard" {
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.incoming_records_sum | delta | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.incoming_records_sum | delta | group_by [], sum"
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.incoming_bytes_sum | delta | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.incoming_bytes_sum | delta | group_by [], sum"
     }
 
   }
@@ -48,18 +44,14 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.get_records_records_count | delta | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.get_records_records_count | delta | group_by [], sum"
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.get_records_latency_max | latest | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.get_records_latency_max | latest | group_by [], sum"
     }
 
   }
@@ -73,9 +65,7 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.get_records_success_count | delta | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.get_records_success_count | delta | group_by [], sum"
     }
 
   }
@@ -89,18 +79,14 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.write_provisioned_throughput_exceeded_max | latest | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.write_provisioned_throughput_exceeded_max | latest | group_by [], sum"
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.read_provisioned_throughput_exceeded_max | latest | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.read_provisioned_throughput_exceeded_max | latest | group_by [], sum"
     }
 
   }
@@ -114,18 +100,14 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.put_records_total_records_count | delta | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.put_records_total_records_count | delta | group_by [], sum"
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.put_record_latency_max | latest | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.put_record_latency_max | latest | group_by [], sum"
     }
 
   }
@@ -139,9 +121,7 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.kinesis.put_record_success_count | delta | group_by [], sum
-EOT
+      query_string = "metric aws.kinesis.put_record_success_count | delta | group_by [], sum"
     }
 
   }
