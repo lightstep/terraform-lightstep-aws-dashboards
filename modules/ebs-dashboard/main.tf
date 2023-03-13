@@ -1,14 +1,3 @@
-terraform {
-  required_providers {
-    lightstep = {
-      source  = "lightstep/lightstep"
-      version = "~> 1.70.10"
-    }
-  }
-  required_version = ">= v1.0.11"
-}
-
-
 resource "lightstep_dashboard" "aws_ebs_dashboard" {
   project_name          = var.lightstep_project
   dashboard_name        = "AWS EBS"
@@ -102,7 +91,7 @@ EOT
   }
 
   chart {
-    name = "Read / Write Ratio (Throughput)"
+    name = "Read / Write (Total Throughput)"
     rank = "3"
     type = "timeseries"
 
@@ -121,7 +110,7 @@ EOT
   }
 
   chart {
-    name = "Read / Write Ratio (Ops)"
+    name = "Read / Write (Total Ops)"
     rank = "4"
     type = "timeseries"
 
@@ -150,9 +139,7 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = <<EOT
-metric aws.ebs.burst_balance_min | reduce min | group_by [], min
-EOT
+      query_string = "metric aws.ebs.burst_balance_min | reduce min | group_by [], min"
     }
 
   }
