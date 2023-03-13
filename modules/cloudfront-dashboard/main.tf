@@ -2,7 +2,7 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.70.9"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
@@ -11,6 +11,7 @@ terraform {
 resource "lightstep_dashboard" "aws_cloudfront_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS CloudFront"
+  dashboard_description = "Monitor AWS CloudFront with this summary dashboard."
 
   chart {
     name = "Requests / TotalErrorRate"
@@ -21,7 +22,9 @@ resource "lightstep_dashboard" "aws_cloudfront_dashboard" {
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.cloudfront.requests_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.cloudfront.requests_sum | delta | group_by [], sum
+EOT
     }
 
     query {
@@ -78,14 +81,18 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.cloudfront.bytes_downloaded_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.cloudfront.bytes_downloaded_sum | delta | group_by [], sum
+EOT
     }
 
     query {
       query_name   = "b"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.cloudfront.bytes_uploaded_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.cloudfront.bytes_uploaded_sum | delta | group_by [], sum
+EOT
     }
 
   }

@@ -2,7 +2,7 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.70.9"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
@@ -11,6 +11,7 @@ terraform {
 resource "lightstep_dashboard" "aws_rds_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS RDS"
+  dashboard_description = "Monitor AWS RDS with this overview dashboard."
 
   chart {
     name = "CPUUtilization/FailedSQLServerAgentJobsCount"
@@ -52,7 +53,9 @@ EOT
       query_name   = "a"
       display      = "line"
       hidden       = false
-      query_string = "metric aws.rds.database_connections_max | reduce max | group_by [], max"
+      query_string = <<EOT
+metric aws.rds.database_connections_max | reduce max | group_by [], max
+EOT
     }
 
     query {

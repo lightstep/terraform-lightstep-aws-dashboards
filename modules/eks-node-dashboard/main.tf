@@ -2,15 +2,16 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.70.9"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
 }
 
 resource "lightstep_dashboard" "aws_eks_node_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS EKS Node"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS EKS Node"
+  dashboard_description = "Monitor EKS Nodes with this overview dashboard."
 
   chart {
     name = "Cluster Node"
@@ -21,14 +22,18 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.cluster_failed_node_count | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.cluster_failed_node_count | delta | group_by [], sum
+EOT
     }
 
     query {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.cluster_node_count | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.cluster_node_count | delta | group_by [], sum
+EOT
     }
 
   }
@@ -42,14 +47,18 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_cpu_limit_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_cpu_limit_sum | delta | group_by [], sum
+EOT
     }
 
     query {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_cpu_reserved_capacity_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_cpu_reserved_capacity_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -63,7 +72,9 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_cpu_usage_total_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_cpu_usage_total_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -77,7 +88,9 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_cpu_utilization_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_cpu_utilization_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -91,7 +104,9 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_filesystem_utilization_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_filesystem_utilization_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -105,14 +120,18 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_memory_utilization_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_memory_utilization_sum | delta | group_by [], sum
+EOT
     }
 
     query {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_memory_reserved_capacity_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_memory_reserved_capacity_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -126,7 +145,9 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_number_of_running_containers_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_number_of_running_containers_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -140,7 +161,9 @@ resource "lightstep_dashboard" "aws_eks_node_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.eks.node_number_of_running_pods_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.eks.node_number_of_running_pods_sum | delta | group_by [], sum
+EOT
     }
 
   }
