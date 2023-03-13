@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_metric_dashboard" "aws_amplify_dashboard" {
-  project_name   = "var.lightstep_project"
+  project_name   = var.lightstep_project
   dashboard_name = "AWS Amplify"
 
   chart {
