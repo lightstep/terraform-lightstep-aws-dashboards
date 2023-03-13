@@ -11,6 +11,7 @@ terraform {
 resource "lightstep_dashboard" "aws_eks_pod_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS EKS Pod"
+  dashboard_description = "Monitor AWS EKS Pods with this summary dashboard."
 
   chart {
     name = "Number of Running Pods"

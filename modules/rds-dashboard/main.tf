@@ -11,6 +11,7 @@ terraform {
 resource "lightstep_dashboard" "aws_rds_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS RDS"
+  dashboard_description = "Monitor AWS RDS with this overview dashboard."
 
   chart {
     name = "CPUUtilization/FailedSQLServerAgentJobsCount"
