@@ -12,7 +12,7 @@ terraform {
 resource "lightstep_dashboard" "aws_dynamodb_dashboard" {
   project_name          = var.lightstep_project
   dashboard_name        = "AWS DynamoDB"
-  dashboard_description = "Monitor DynamoDB with this overview dashboard."
+  dashboard_description = "Monitor AWS DynamoDB with this dashboard."
 
   chart {
     name = "Request Latency Per Table"
@@ -24,7 +24,7 @@ resource "lightstep_dashboard" "aws_dynamodb_dashboard" {
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.dynamo_db.successful_request_latency_max | latest | group_by ["TableName"], max
+metric aws.dynamo_db.successful_request_latency_max | latest | group_by [], max
 EOT
     }
 
@@ -40,7 +40,7 @@ EOT
       display      = "bar"
       hidden       = false
       query_string = <<EOT
-metric aws.dynamo_db.provisioned_read_capacity_units_count | delta | group_by ["TableName"], max
+metric aws.dynamo_db.provisioned_read_capacity_units_count | delta | group_by [], max
 EOT
     }
 
@@ -56,7 +56,7 @@ EOT
       display      = "bar"
       hidden       = false
       query_string = <<EOT
-metric aws.dynamo_db.provisioned_write_capacity_units_count | delta | group_by ["TableName"], sum
+metric aws.dynamo_db.provisioned_write_capacity_units_count | delta | group_by [], sum
 EOT
     }
 
@@ -72,7 +72,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.dynamo_db.account_provisioned_read_capacity_utilization_max | latest | group_by ["TableName"], sum
+metric aws.dynamo_db.account_provisioned_read_capacity_utilization_max | latest | group_by [], sum
 EOT
     }
 
@@ -81,7 +81,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.dynamo_db.max_provisioned_table_write_capacity_utilization_max | latest | group_by ["TableName"], sum
+metric aws.dynamo_db.max_provisioned_table_write_capacity_utilization_max | latest | group_by [], sum
 EOT
     }
 
@@ -97,7 +97,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.dynamo_db.returned_item_count_count | delta | group_by ["TableName"], sum
+metric aws.dynamo_db.returned_item_count_count | delta | group_by [], sum
 EOT
     }
 
@@ -113,7 +113,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.dynamo_db.account_max_table_level_reads_count | delta | group_by ["TableName"], sum
+metric aws.dynamo_db.account_max_table_level_reads_count | delta | group_by [], sum
 EOT
     }
 
@@ -122,7 +122,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.dynamo_db.account_max_table_level_writes_count | delta | group_by ["TableName"], sum
+metric aws.dynamo_db.account_max_table_level_writes_count | delta | group_by [], sum
 EOT
     }
 
