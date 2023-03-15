@@ -11,7 +11,6 @@ terraform {
 resource "lightstep_dashboard" "aws_cloudfront_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS CloudFront"
-  dashboard_description = "Monitor AWS CloudFront with this summary dashboard."
 
   chart {
     name = "Requests / TotalErrorRate"

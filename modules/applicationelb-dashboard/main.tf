@@ -9,8 +9,8 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_app_elb_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Application ELB Load Balancer"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Application ELB Load Balancer"
   dashboard_description = "Monitor AWS Application ELB with this overview dashboard."
 
   chart {

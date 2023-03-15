@@ -9,9 +9,8 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_eks_node_dashboard" {
-  project_name          = var.lightstep_project
-  dashboard_name        = "AWS EKS Node"
-  dashboard_description = "Monitor EKS Nodes with this overview dashboard."
+  project_name   = var.lightstep_project
+  dashboard_name = "AWS EKS Node"
 
   chart {
     name = "Cluster Node"
