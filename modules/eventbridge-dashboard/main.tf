@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    lightstep = {
+      source  = "lightstep/lightstep"
+      version = "~> 1.70.10"
+    }
+  }
+  required_version = ">= v1.0.11"
+}
 
 resource "lightstep_dashboard" "aws_eventbridge_dashboard" {
   project_name          = var.lightstep_project
