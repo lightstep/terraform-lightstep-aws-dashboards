@@ -11,7 +11,8 @@ terraform {
 
 resource "lightstep_dashboard" "aws_natgateway_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS NATGateway"
+  dashboard_name = "AWS NAT Gateway"
+  description = "Monitor AWS NAT Gateway with this summary dashboard."
 
   chart {
     name = "Bytes In From Destination"
