@@ -12,7 +12,7 @@ terraform {
 resource "lightstep_dashboard" "aws_sqs_dashboard" {
   project_name          = var.lightstep_project
   dashboard_name        = "AWS SQS"
-  dashboard_description = "A dashboard that offers a visibility of security, durability, and availability hosted queue, so that you can integrate and decouple distributed software systems and components."
+  dashboard_description = "Monitor AWS SQS with this summary dashboard."
 
   chart {
     name = "Number of Messages Sent"
