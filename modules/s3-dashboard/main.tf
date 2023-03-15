@@ -8,10 +8,9 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_dashboard" "aws_s3_dashboard" {
-  project_name          = var.lightstep_project
-  dashboard_name        = "AWS S3"
-  dashboard_description = "Monitor AWS S3 to understand and improve the processes storage data performance."
+resource "lightstep_metric_dashboard" "aws_s3_dashboard" {
+  project_name   = var.lightstep_project
+  dashboard_name = "AWS S3"
 
   chart {
     name = "Requests"
@@ -19,12 +18,19 @@ resource "lightstep_dashboard" "aws_s3_dashboard" {
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.s3.all_requests_max | latest | group_by [], sum
-EOT
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.s3.all_requests_max"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["BucketName", ]
+      }
+
     }
 
   }
@@ -35,21 +41,35 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.s3.bytes_downloaded_max | latest | group_by [], sum
-EOT
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.s3.bytes_downloaded_max"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["BucketName", ]
+      }
+
     }
 
     query {
-      query_name   = "b"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.s3.bytes_uploaded_max | latest | group_by [], sum
-EOT
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.s3.bytes_uploaded_max"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["BucketName", ]
+      }
+
     }
 
   }
@@ -60,21 +80,35 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.s3.first_byte_latency_max | latest | group_by [], sum
-EOT
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.s3.first_byte_latency_max"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["BucketName", ]
+      }
+
     }
 
     query {
-      query_name   = "b"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.s3.total_request_latency_max | latest | group_by [], sum
-EOT
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.s3.total_request_latency_max"
+      timeseries_operator = "last"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["FilterId", ]
+      }
+
     }
 
   }
@@ -85,24 +119,37 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.s3.5xx_errors_count | delta | group_by [], sum
-EOT
+      query_name = "a"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.s3.5xx_errors_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["BucketName", ]
+      }
+
     }
 
     query {
-      query_name   = "b"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.s3.4xx_errors_count | delta | group_by [], sum
-EOT
+      query_name = "b"
+      display    = "line"
+      hidden     = false
+
+      metric              = "aws.s3.4xx_errors_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["BucketName", ]
+      }
+
     }
 
   }
 
 }
-

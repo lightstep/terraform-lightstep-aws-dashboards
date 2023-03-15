@@ -8,9 +8,9 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_dashboard" "aws_ec2_dashboard" {
+resource "lightstep_metric_dashboard" "aws_ec2_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS EC2"
+  dashboard_name = "AWS EC2 (${var.aws_region})"
 
   chart {
     name = "CPU Utilization"

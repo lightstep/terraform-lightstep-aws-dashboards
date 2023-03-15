@@ -8,11 +8,9 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-
-resource "lightstep_dashboard" "aws_natgateway_dashboard" {
+resource "lightstep_metric_dashboard" "aws_natgateway_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "AWS NAT Gateway"
-  description = "Monitor AWS NAT Gateway with this summary dashboard."
+  dashboard_name = "AWS NATGateway"
 
   chart {
     name = "Bytes In From Destination"
@@ -20,21 +18,35 @@ resource "lightstep_dashboard" "aws_natgateway_dashboard" {
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.bytes_in_from_destination_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.bytes_in_from_destination_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
     query {
-      query_name   = "b"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.bytes_out_to_source_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.bytes_out_to_source_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
   }
@@ -45,21 +57,35 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.bytes_in_from_source_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.bytes_in_from_source_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
     query {
-      query_name   = "b"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.bytes_out_to_destination_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.bytes_out_to_destination_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
   }
@@ -70,21 +96,35 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.packets_in_from_destination_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.packets_in_from_destination_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
     query {
-      query_name   = "b"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.packets_out_to_source_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.packets_out_to_source_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
   }
@@ -95,21 +135,35 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.packets_in_from_source_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.packets_in_from_source_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
     query {
-      query_name   = "b"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.packets_out_to_destination_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.packets_out_to_destination_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
   }
@@ -120,12 +174,19 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.idle_timeout_count_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.idle_timeout_count_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
   }
@@ -136,12 +197,19 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.packets_drop_count_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.packets_drop_count_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
   }
@@ -152,12 +220,19 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.error_port_allocation_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.error_port_allocation_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
   }
@@ -168,30 +243,51 @@ EOT
     type = "timeseries"
 
     query {
-      query_name   = "a"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.active_connection_count_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "a"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.active_connection_count_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
     query {
-      query_name   = "b"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.connection_attempt_count_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "b"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.connection_attempt_count_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
     query {
-      query_name   = "c"
-      display      = "bar"
-      hidden       = false
-      query_string = <<EOT
-metric aws.natgateway.connection_established_count_count | delta | group_by ["NatGatewayId"], sum
-EOT
+      query_name = "c"
+      display    = "bar"
+      hidden     = false
+
+      metric              = "aws.natgateway.connection_established_count_count"
+      timeseries_operator = "delta"
+
+
+      group_by {
+        aggregation_method = "sum"
+        keys               = ["NatGatewayId", ]
+      }
+
     }
 
   }
