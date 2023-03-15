@@ -10,8 +10,8 @@ terraform {
 
 
 resource "lightstep_dashboard" "aws_sns_summary_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS SNS"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS SNS"
   dashboard_description = "Monitor AWS SNS to collect, view, and analyze metrics for every active Amazon SNS notification."
 
   chart {
