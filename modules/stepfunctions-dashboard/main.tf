@@ -22,7 +22,9 @@ resource "lightstep_dashboard" "aws_step_functions_dashboard" {
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_succeeded_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_succeeded_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -49,7 +51,9 @@ EOT
       query_name   = "b"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.execution_time_max | reduce max | group_by [], max"
+      query_string = <<EOT
+metric aws.states.execution_time_max | reduce max | group_by [], max
+EOT
     }
 
   }
@@ -63,7 +67,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_started_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_started_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -77,7 +83,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_failed_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_failed_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -91,7 +99,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_timed_out_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_timed_out_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -105,7 +115,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.executions_aborted_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.executions_aborted_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -119,7 +131,9 @@ EOT
       query_name   = "a"
       display      = "bar"
       hidden       = false
-      query_string = "metric aws.states.execution_throttled_sum | delta | group_by [], sum"
+      query_string = <<EOT
+metric aws.states.execution_throttled_sum | delta | group_by [], sum
+EOT
     }
 
   }
