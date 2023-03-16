@@ -8,9 +8,10 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS ElastiCache (Redis)"
+resource "lightstep_dashboard" "aws_elasticache_redis_dashboard" {
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS ElastiCache (Redis)"
+  dashboard_description = ""
 
   chart {
     name = "Cache"
@@ -18,35 +19,21 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.cache_hits_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.cache_hits_count | delta | group_by ["CacheClusterId"], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.cache_misses_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.cache_misses_count | delta | group_by ["CacheClusterId"], sum
+EOT
     }
 
   }
@@ -57,35 +44,17 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.curr_connections_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = "metric aws.elasti_cache.curr_connections_max | latest | group_by [], sum"
     }
 
     query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.new_connections_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = "metric aws.elasti_cache.new_connections_max | latest | group_by [], sum"
     }
 
   }
@@ -96,35 +65,21 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.save_in_progress_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.save_in_progress_max | latest | group_by ["CacheClusterId"], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.curr_items_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.curr_items_max | latest | group_by ["CacheClusterId"], sum
+EOT
     }
 
   }
@@ -135,35 +90,21 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.bytes_used_for_cache_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.bytes_used_for_cache_max | latest | group_by ["CacheClusterId"], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.replication_bytes_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.replication_bytes_max | latest | group_by ["CacheClusterId"], sum
+EOT
     }
 
   }
@@ -174,19 +115,12 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.replication_lag_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.replication_lag_max | latest | group_by ["CacheClusterId"], sum
+EOT
     }
 
   }
@@ -197,19 +131,10 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.database_memory_usage_percentage_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = "metric aws.elasti_cache.database_memory_usage_percentage_max | latest | group_by [], sum"
     }
 
   }
@@ -220,19 +145,12 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.cpu_utilization_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.cpu_utilization_max | latest | group_by ["CacheClusterId"], sum
+EOT
     }
 
   }
@@ -243,35 +161,21 @@ resource "lightstep_metric_dashboard" "aws_elasticache_redis_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.network_bytes_in_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.network_bytes_in_max | latest | group_by ["CacheClusterId"], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.elasti_cache.network_bytes_out_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["CacheClusterId", ]
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.elasti_cache.network_bytes_out_max | latest | group_by ["CacheClusterId"], sum
+EOT
     }
 
   }
