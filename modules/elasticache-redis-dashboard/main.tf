@@ -11,7 +11,7 @@ terraform {
 resource "lightstep_dashboard" "aws_elasticache_redis_dashboard" {
   project_name          = var.lightstep_project
   dashboard_name        = "AWS ElastiCache (Redis)"
-  dashboard_description = ""
+  dashboard_description = "Monitor AWS ElastiCache (Redis) with this overview dashboard."
 
   chart {
     name = "Cache"

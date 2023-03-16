@@ -11,7 +11,7 @@ terraform {
 resource "lightstep_dashboard" "aws_s3_dashboard" {
   project_name          = var.lightstep_project
   dashboard_name        = "AWS S3"
-  dashboard_description = "Monitor AWS S3 to understand and improve the processes storage data performance."
+  dashboard_description = "Monitor AWS S3 performance with this overview dashboard."
 
   chart {
     name = "Requests"

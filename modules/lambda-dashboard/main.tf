@@ -11,7 +11,7 @@ terraform {
 resource "lightstep_dashboard" "aws_lambda_dashboard" {
   project_name          = var.lightstep_project
   dashboard_name        = "AWS Lambda"
-  dashboard_description = ""
+  dashboard_description = "Monitor AWS Lambda with this summary dashboard."
 
   chart {
     name = "Duration"
