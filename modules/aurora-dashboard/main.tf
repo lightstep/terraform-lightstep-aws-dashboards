@@ -2,15 +2,16 @@ terraform {
   required_providers {
     lightstep = {
       source  = "lightstep/lightstep"
-      version = "~> 1.70.1"
+      version = "~> 1.70.10"
     }
   }
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS AURORA"
+resource "lightstep_dashboard" "aws_aurora_dashboard" {
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS AURORA"
+  dashboard_description = ""
 
   chart {
     name = "Binary lag replica DB cluster"
@@ -18,67 +19,39 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_binlog_replica_lag_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_binlog_replica_lag_count | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_binlog_replica_lag_max"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_binlog_replica_lag_max | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_binlog_replica_lag_min"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "c"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_binlog_replica_lag_min | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_binlog_replica_lag_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "d"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_binlog_replica_lag_sum | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
   }
@@ -89,67 +62,39 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_dml_rejected_master_full_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_dml_rejected_master_full_count | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_dml_rejected_master_full_max"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_dml_rejected_master_full_max | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_dml_rejected_master_full_min"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "c"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_dml_rejected_master_full_min | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_dml_rejected_master_full_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "d"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_dml_rejected_master_full_sum | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
   }
@@ -160,67 +105,39 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_attempted_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_pq_request_attempted_count | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_attempted_max"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_pq_request_attempted_max | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_attempted_min"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "c"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_pq_request_attempted_min | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_attempted_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "d"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_pq_request_attempted_sum | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
   }
@@ -231,67 +148,39 @@ resource "lightstep_metric_dashboard" "aws_aurora_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_executed_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_pq_request_executed_count | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_executed_max"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_pq_request_executed_max | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_executed_min"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "c"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_pq_request_executed_min | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.rds.aurora_pq_request_attempted_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["DBClusterIdentifier"]
-      }
-
+      query_name   = "d"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.rds.aurora_pq_request_attempted_sum | delta | group_by ["DBClusterIdentifier"], sum
+EOT
     }
 
   }
