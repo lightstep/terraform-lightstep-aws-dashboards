@@ -8,7 +8,6 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-
 resource "lightstep_dashboard" "aws_sqs_dashboard" {
   project_name          = var.lightstep_project
   dashboard_name        = "AWS SQS"
@@ -25,6 +24,7 @@ resource "lightstep_dashboard" "aws_sqs_dashboard" {
       hidden       = false
       query_string = <<EOT
 metric aws.sqs.number_of_messages_sent_count | delta | group_by [], sum
+
 EOT
     }
 
@@ -34,6 +34,7 @@ EOT
       hidden       = false
       query_string = <<EOT
 metric aws.sqs.number_of_messages_received_count | delta | group_by [], sum
+
 EOT
     }
 
@@ -50,6 +51,7 @@ EOT
       hidden       = false
       query_string = <<EOT
 metric aws.sqs.approximate_age_of_oldest_message_max | latest | group_by [], sum
+
 EOT
     }
 
@@ -66,6 +68,7 @@ EOT
       hidden       = false
       query_string = <<EOT
 metric aws.sqs.approximate_number_of_messages_visible_count | rate | group_by [], sum
+
 EOT
     }
 
@@ -75,6 +78,7 @@ EOT
       hidden       = false
       query_string = <<EOT
 metric aws.sqs.approximate_number_of_messages_delayed_count | delta | group_by [], sum
+
 EOT
     }
 
@@ -91,6 +95,7 @@ EOT
       hidden       = false
       query_string = <<EOT
 metric aws.sqs.number_of_empty_receives_count | delta | group_by [], sum
+
 EOT
     }
 
@@ -107,10 +112,10 @@ EOT
       hidden       = false
       query_string = <<EOT
 metric aws.sqs.sent_message_size_max | latest | group_by [], sum
+
 EOT
     }
 
   }
 
 }
-
