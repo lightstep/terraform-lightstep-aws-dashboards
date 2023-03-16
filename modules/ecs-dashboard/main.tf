@@ -8,9 +8,10 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_ecs_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS ECS"
+resource "lightstep_dashboard" "aws_ecs_dashboard" {
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS ECS"
+  dashboard_description = "Monitor AWS ECS with this summary dashboard."
 
   chart {
     name = "CPU Utilization"
@@ -18,19 +19,12 @@ resource "lightstep_metric_dashboard" "aws_ecs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.ecs.cpu_utilization_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["ClusterName", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.ecs.cpu_utilization_max | latest | group_by ["ClusterName"], sum
+EOT
     }
 
   }
@@ -41,19 +35,12 @@ resource "lightstep_metric_dashboard" "aws_ecs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.ecs.memory_utilization_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["ClusterName", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.ecs.memory_utilization_max | latest | group_by ["ClusterName"], sum
+EOT
     }
 
   }
@@ -64,19 +51,12 @@ resource "lightstep_metric_dashboard" "aws_ecs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.ecs.cpu_reservation_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["ClusterName", ]
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.ecs.cpu_reservation_max | latest | group_by ["ClusterName"], sum
+EOT
     }
 
   }
@@ -87,19 +67,12 @@ resource "lightstep_metric_dashboard" "aws_ecs_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.ecs.memory_reservation_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.ecs.memory_reservation_max | latest | group_by [], sum
+EOT
     }
 
   }
