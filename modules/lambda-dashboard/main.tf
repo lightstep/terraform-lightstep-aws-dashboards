@@ -8,9 +8,10 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_lambda_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Lambda"
+resource "lightstep_dashboard" "aws_lambda_dashboard" {
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Lambda"
+  dashboard_description = ""
 
   chart {
     name = "Duration"
@@ -18,18 +19,12 @@ resource "lightstep_metric_dashboard" "aws_lambda_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.lambda.duration_max"
-      timeseries_operator = "last"
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.lambda.duration_max | latest | group_by [], sum
+EOT
     }
 
   }
@@ -40,18 +35,12 @@ resource "lightstep_metric_dashboard" "aws_lambda_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.lambda.invocations_count"
-      timeseries_operator = "delta"
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.lambda.invocations_count | delta | group_by [], sum
+EOT
     }
 
   }
@@ -62,18 +51,12 @@ resource "lightstep_metric_dashboard" "aws_lambda_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.lambda.errors_max"
-      timeseries_operator = "last"
-
-      group_by {
-        aggregation_method = "avg"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.lambda.errors_max | latest | group_by [], mean
+EOT
     }
 
   }
@@ -84,18 +67,12 @@ resource "lightstep_metric_dashboard" "aws_lambda_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.lambda.throttles_max"
-      timeseries_operator = "last"
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.lambda.throttles_max | latest | group_by [], sum
+EOT
     }
 
   }
@@ -106,33 +83,21 @@ resource "lightstep_metric_dashboard" "aws_lambda_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.lambda.concurrent_executions_count"
-      timeseries_operator = "delta"
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.lambda.concurrent_executions_count | delta | group_by [], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.lambda.unreserved_concurrent_executions_count"
-      timeseries_operator = "delta"
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.lambda.unreserved_concurrent_executions_count | delta | group_by [], sum
+EOT
     }
 
   }
