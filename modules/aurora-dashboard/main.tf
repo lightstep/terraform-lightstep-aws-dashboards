@@ -10,8 +10,8 @@ terraform {
 
 resource "lightstep_dashboard" "aws_aurora_dashboard" {
   project_name          = var.lightstep_project
-  dashboard_name        = "AWS AURORA"
-  dashboard_description = ""
+  dashboard_name        = "AWS Aurora"
+  dashboard_description = "Monitor AWS Aurora with this overview dashboard."
 
   chart {
     name = "Binary lag replica DB cluster"
