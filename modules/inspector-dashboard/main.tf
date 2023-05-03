@@ -8,7 +8,7 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_inspector_dashboard" {
+resource "lightstep_dashboard" "aws_inspector_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS Inspector"
 
@@ -22,14 +22,9 @@ resource "lightstep_metric_dashboard" "aws_inspector_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.inspector.total_findings_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
+      query_string = <<EOT
+metric aws.inspector.total_findings_count | delta | group_by [], sum
+EOT
 
     }
 
@@ -45,14 +40,9 @@ resource "lightstep_metric_dashboard" "aws_inspector_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.inspector.total_matching_agents_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
+      query_string = <<EOT
+metric aws.inspector.total_matching_agents_count | delta | group_by [], sum
+EOT
 
     }
 
@@ -61,14 +51,9 @@ resource "lightstep_metric_dashboard" "aws_inspector_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.inspector.total_healthy_agents_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
+      query_string = <<EOT
+metric aws.inspector.total_healthy_agents_count | delta | group_by [], sum
+EOT
 
     }
 
@@ -84,14 +69,9 @@ resource "lightstep_metric_dashboard" "aws_inspector_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.inspector.total_assessment_runs_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
+      query_string = <<EOT
+metric aws.inspector.total_assessment_runs_count | delta | group_by [], sum
+EOT
 
     }
 
