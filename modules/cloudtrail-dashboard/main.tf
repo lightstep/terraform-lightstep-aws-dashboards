@@ -8,7 +8,7 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_cloudtrail_dashboard" {
+resource "lightstep_dashboard" "aws_cloudtrail_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS CloudTrail"
 
@@ -18,19 +18,12 @@ resource "lightstep_metric_dashboard" "aws_cloudtrail_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudtrail.units_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudtrail.units_sum | delta | group_by [], sum
+EOT
     }
 
   }
@@ -41,19 +34,12 @@ resource "lightstep_metric_dashboard" "aws_cloudtrail_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudtrail.total_data_retained_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudtrail.total_data_retained_sum | delta | group_by [], sum
+EOT
     }
 
   }
