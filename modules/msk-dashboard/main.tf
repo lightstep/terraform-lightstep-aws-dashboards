@@ -8,7 +8,7 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_msk_dashboard" {
+resource "lightstep_dashboard" "aws_msk_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS MSK"
 
@@ -22,15 +22,9 @@ resource "lightstep_metric_dashboard" "aws_msk_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.msk.messages_in_per_sec_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["Topic", ]
-      }
-
+      query_string = <<EOT
+metric aws.msk.messages_in_per_sec_count | delta | group_by ["Topic"], sum
+EOT
     }
 
   }
@@ -45,15 +39,9 @@ resource "lightstep_metric_dashboard" "aws_msk_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.msk.fetch_message_conversions_per_sec_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["Topic", ]
-      }
-
+      query_string = <<EOT
+metric aws.msk.fetch_message_conversions_per_sec_count | delta | group_by ["Topic"], sum
+EOT
     }
 
   }
@@ -68,15 +56,9 @@ resource "lightstep_metric_dashboard" "aws_msk_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.msk.fetch_message_conversions_per_sec_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["Topic", ]
-      }
-
+      query_string = <<EOT
+metric aws.msk.fetch_message_conversions_per_sec_count | delta | group_by ["Topic"], sum
+EOT
     }
 
   }
@@ -91,15 +73,9 @@ resource "lightstep_metric_dashboard" "aws_msk_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.msk.bytes_in_per_sec_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["Topic", ]
-      }
-
+      query_string = <<EOT
+metric aws.msk.bytes_in_per_sec_count | delta | group_by ["Topic"], sum
+EOT
     }
 
   }
@@ -114,15 +90,9 @@ resource "lightstep_metric_dashboard" "aws_msk_dashboard" {
       display    = "bar"
       hidden     = false
 
-      metric              = "aws.msk.bytes_out_per_sec_count"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = ["Topic", ]
-      }
-
+      query_string = <<EOT
+metric aws.msk.bytes_out_per_sec_count | delta | group_by ["Topic"], sum
+EOT
     }
 
   }
