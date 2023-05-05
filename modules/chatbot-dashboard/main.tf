@@ -8,7 +8,7 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
+resource "lightstep_dashboard" "aws_chatbot_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS Chatbot"
 
@@ -18,37 +18,22 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.chatbot.events_throttled_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chatbot.events_throttled_sum | delta | group_by [], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "line"
-      hidden     = false
-
-      metric              = "aws.chatbot.events_processed_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "count"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chatbot.events_processed_sum | delta | group_by [], count
+EOT
     }
-
   }
 
   chart {
@@ -57,21 +42,13 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chatbot.unsupported_events_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chatbot.unsupported_events_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -80,37 +57,21 @@ resource "lightstep_metric_dashboard" "aws_chatbot_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chatbot.message_delivery_success_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chatbot.message_delivery_success_sum | delta | group_by [], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chatbot.message_delivery_failure_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chatbot.message_delivery_failure_sum | delta | group_by [], sum
+EOT
     }
-
   }
-
 }
