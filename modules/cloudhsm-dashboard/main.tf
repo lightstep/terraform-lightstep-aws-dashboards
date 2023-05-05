@@ -8,7 +8,7 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
+resource "lightstep_dashboard" "aws_cloudhsm_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS CloudHSM"
 
@@ -18,21 +18,13 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_session_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudhsm.hsm_session_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -41,37 +33,22 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_temperature_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudhsm.hsm_temperature_max | last | group_by [], max
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_temperature_min"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "min"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudhsm.hsm_temperature_min | last | group_by [], min
+EOT
     }
-
   }
 
   chart {
@@ -80,21 +57,13 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_keys_session_occupied_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudhsm.hsm_keys_session_occupied_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -103,21 +72,13 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_keys_token_occupied_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudhsm.hsm_keys_token_occupied_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -126,21 +87,13 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_ssl_ctxs_occupied_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudhsm.hsm_ssl_ctxs_occupied_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -149,21 +102,13 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_users_available_sum"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudhsm.hsm_users_available_sum | last | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -172,21 +117,12 @@ resource "lightstep_metric_dashboard" "aws_cloudhsm_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.cloudhsm.hsm_users_max_max"
-      timeseries_operator = "last"
-
-
-      group_by {
-        aggregation_method = "max"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.cloudhsm.hsm_users_max_max | last | group_by [], max
+EOT
     }
-
   }
-
 }
