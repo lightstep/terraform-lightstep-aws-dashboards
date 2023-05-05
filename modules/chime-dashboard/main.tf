@@ -8,7 +8,7 @@ terraform {
   required_version = ">= v1.0.11"
 }
 
-resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
+resource "lightstep_dashboard" "aws_chime_dashboard" {
   project_name   = var.lightstep_project
   dashboard_name = "AWS Chime SDK"
 
@@ -18,37 +18,22 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chime.attendee_authorization_success_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chime.attendee_authorization_success_sum | delta | group_by [], sum
+EOT
     }
 
     query {
-      query_name = "b"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chime.attendee_authorization_error_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "b"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chime.attendee_authorization_error_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -57,21 +42,13 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chime.attendee_audio_drops_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chime.attendee_audio_drops_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -80,21 +57,13 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chime.attendee_content_drops_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chime.attendee_content_drops_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -103,21 +72,13 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chime.meeting_sqs_notification_errors_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chime.meeting_sqs_notification_errors_sum | delta | group_by [], sum
+EOT
     }
-
   }
 
   chart {
@@ -126,21 +87,12 @@ resource "lightstep_metric_dashboard" "aws_chime_dashboard" {
     type = "timeseries"
 
     query {
-      query_name = "a"
-      display    = "bar"
-      hidden     = false
-
-      metric              = "aws.chime.meeting_sns_notification_errors_sum"
-      timeseries_operator = "delta"
-
-
-      group_by {
-        aggregation_method = "sum"
-        keys               = []
-      }
-
+      query_name   = "a"
+      display      = "bar"
+      hidden       = false
+      query_string = <<EOT
+metric aws.chime.meeting_sns_notification_errors_sum | delta | group_by [], sum
+EOT
     }
-
   }
-
 }
