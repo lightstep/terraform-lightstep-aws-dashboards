@@ -9,11 +9,27 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_ec2_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS EC2"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS EC2"
+  dashboard_description = "Monitor AWS EC2 - compute - performance metrics."
 
   chart {
     name = "CPU Utilization"
+    rank = "0"
+    type = "timeseries"
+
+    query {
+      query_name   = "a"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.ec2.cpu_utilization_sum | delta | group_by ["InstanceId"], sum
+EOT
+    }
+  }
+
+  chart {
+    name = "CPU Credit"
     rank = "1"
     type = "timeseries"
 
@@ -22,13 +38,22 @@ resource "lightstep_dashboard" "aws_ec2_dashboard" {
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.cpu_utilization_max | last | group_by ["InstanceId"], max
+metric aws.ec2.cpu_credit_usage_sum | delta | group_by ["InstanceId"], sum 
+EOT
+    }
+
+    query {
+      query_name   = "b"
+      display      = "line"
+      hidden       = false
+      query_string = <<EOT
+metric aws.ec2.cpu_credit_balance_sum | delta | group_by ["InstanceId"], sum
 EOT
     }
   }
 
   chart {
-    name = "CPU Credit"
+    name = "Disk Ops"
     rank = "2"
     type = "timeseries"
 
@@ -37,7 +62,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.cpu_credit_usage_max | last | group_by ["InstanceId"], max
+metric aws.ec2.disk_read_ops_sum | delta | group_by ["InstanceId"], sum
 EOT
     }
 
@@ -46,13 +71,13 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.cpu_credit_balance_max | last | group_by ["InstanceId"], max
+metric aws.ec2.disk_write_ops_sum | delta | group_by ["InstanceId"], sum
 EOT
     }
   }
 
   chart {
-    name = "Disk Ops"
+    name = "Disk Bytes"
     rank = "3"
     type = "timeseries"
 
@@ -61,7 +86,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.disk_read_ops_max | last | group_by ["InstanceId"], max
+metric aws.ec2.disk_read_bytes_sum | delta | group_by ["InstanceId"], sum 
 EOT
     }
 
@@ -70,13 +95,13 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.disk_write_ops_max | last | group_by ["InstanceId"], max
+metric aws.ec2.disk_write_bytes_sum | delta | group_by ["InstanceId"], sum
 EOT
     }
   }
 
   chart {
-    name = "Disk Bytes"
+    name = "Network Bytes"
     rank = "4"
     type = "timeseries"
 
@@ -85,7 +110,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.disk_read_bytes_max | last | group_by ["InstanceId"], max
+metric aws.ec2.network_in_sum | delta | group_by ["InstanceId"], sum
 EOT
     }
 
@@ -94,13 +119,13 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.disk_write_bytes_max | last | group_by ["InstanceId"], max
+metric aws.ec2.network_out_sum | delta | group_by ["InstanceId"], sum 
 EOT
     }
   }
 
   chart {
-    name = "Network"
+    name = "Network Packets"
     rank = "5"
     type = "timeseries"
 
@@ -109,7 +134,7 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.network_in_max | last | group_by ["InstanceId"], max
+metric aws.ec2.network_packets_in_sum | delta | group_by ["InstanceId"], sum
 EOT
     }
 
@@ -118,38 +143,14 @@ EOT
       display      = "line"
       hidden       = false
       query_string = <<EOT
-metric aws.ec2.network_out_max | last | group_by ["InstanceId"], max
-EOT
-    }
-  }
-
-  chart {
-    name = "Network Packets"
-    rank = "6"
-    type = "timeseries"
-
-    query {
-      query_name   = "a"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.ec2.network_packets_in_max | last | group_by ["InstanceId"], max
-EOT
-    }
-
-    query {
-      query_name   = "b"
-      display      = "line"
-      hidden       = false
-      query_string = <<EOT
-metric aws.ec2.network_packets_out_max | last | group_by ["InstanceId"], max
+metric aws.ec2.network_packets_out_sum | delta | group_by ["InstanceId"], sum
 EOT
     }
   }
 
   chart {
     name = "Status Check"
-    rank = "7"
+    rank = "6"
     type = "timeseries"
 
     query {
