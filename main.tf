@@ -30,7 +30,7 @@ module "lightstep_ecs_dashboard" {
   lightstep_project = var.lightstep_project
 }
 
-module "lightstep_app_elb_dashboard" {
+module "lightstep_applicationelb_dashboard" {
   source            = "./modules/applicationelb-dashboard"
   lightstep_project = var.lightstep_project
 }
