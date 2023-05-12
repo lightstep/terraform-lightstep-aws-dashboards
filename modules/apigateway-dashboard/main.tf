@@ -35,7 +35,7 @@ EOT
     query {
       query_name   = "a"
       query_string = <<EOT
-metric aws.api_gateway.integration_latency_max | last | group_by [], sum
+metric aws.api_gateway.integration_latency_max | latest | group_by [], sum
 EOT
       display      = "line"
       hidden       = false
@@ -44,7 +44,7 @@ EOT
     query {
       query_name   = "a"
       query_string = <<EOT
-metric aws.api_gateway.latency_max | last | group_by [], sum
+metric aws.api_gateway.latency_max | latest | group_by [], sum
 EOT
       display      = "line"
       hidden       = false
@@ -83,7 +83,7 @@ EOT
     query {
       query_name   = "a"
       query_string = <<EOT
-metric aws.api_gateway.data_processed_max | last | group_by [], sum
+metric aws.api_gateway.data_processed_max | latest | group_by [], sum
 EOT
       display      = "line"
       hidden       = false
