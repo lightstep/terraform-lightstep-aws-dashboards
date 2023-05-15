@@ -10,7 +10,7 @@ terraform {
 
 resource "lightstep_dashboard" "aws_athena_dashboard" {
   project_name   = var.lightstep_project
-  dashboard_name = "Amazon Athena"
+  dashboard_name = "AWS Athena"
 
   chart {
     name = "Total Execution Time"
