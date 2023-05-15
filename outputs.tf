@@ -11,7 +11,7 @@ output "lightstep_apigateway_dashboard_url" {
 
 output "lightstep_applicationelb_dashboard_url" {
   value       = module.lightstep_applicationelb_dashboard.dashboard_url
-  description = "Lightstep AWS Application ELB Load Balancer Dashboard"
+  description = "Lightstep AWS Application ELB Dashboard URL"
 }
 
 output "lightstep_athena_dashboard_url" {
