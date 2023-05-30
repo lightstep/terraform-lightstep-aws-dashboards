@@ -37,7 +37,7 @@ EOT
       display      = "bar"
       hidden       = false
       query_string = <<EOT
-metric aws.cloudhsm.hsm_temperature_max | last | group_by [], max
+metric aws.cloudhsm.hsm_temperature_max | latest | group_by [], max
 EOT
     }
 
@@ -46,7 +46,7 @@ EOT
       display      = "bar"
       hidden       = false
       query_string = <<EOT
-metric aws.cloudhsm.hsm_temperature_min | last | group_by [], min
+metric aws.cloudhsm.hsm_temperature_min | latest | group_by [], min
 EOT
     }
   }
@@ -106,7 +106,7 @@ EOT
       display      = "bar"
       hidden       = false
       query_string = <<EOT
-metric aws.cloudhsm.hsm_users_available_sum | last | group_by [], sum
+metric aws.cloudhsm.hsm_users_available_sum | latest | group_by [], sum
 EOT
     }
   }
@@ -121,7 +121,7 @@ EOT
       display      = "bar"
       hidden       = false
       query_string = <<EOT
-metric aws.cloudhsm.hsm_users_max_max | last | group_by [], max
+metric aws.cloudhsm.hsm_users_max_max | latest | group_by [], max
 EOT
     }
   }
