@@ -6,7 +6,7 @@ gen:
 	go run tools/generaterootmod.go
 
 fmt:
-	terraform fmt
+	terraform fmt -recursive
 	gofmt -w -s ./tools
 
 check:

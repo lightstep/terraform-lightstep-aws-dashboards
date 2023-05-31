@@ -29,11 +29,6 @@ module "lightstep_applicationelb_dashboard" {
   lightstep_project = var.lightstep_project
 }
 
-module "lightstep_applicationelb_dashboard" {
-  source            = "./modules/applicationelb-dashboard"
-  lightstep_project = var.lightstep_project
-}
-
 module "lightstep_athena_dashboard" {
   source            = "./modules/athena-dashboard"
   lightstep_project = var.lightstep_project

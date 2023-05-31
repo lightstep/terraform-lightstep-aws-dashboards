@@ -11,12 +11,12 @@ output "lightstep_apigateway_dashboard_url" {
 
 output "lightstep_applicationelb_dashboard_url" {
   value       = module.lightstep_applicationelb_dashboard.dashboard_url
-  description = "Lightstep AWS Application ELB Dashboard URL"
+  description = "Lightstep AWS Application ELB Dashboard"
 }
 
 output "lightstep_athena_dashboard_url" {
   value       = module.lightstep_athena_dashboard.dashboard_url
-  description = "Lightstep AWS  Dashboard"
+  description = "Lightstep AWS Athena Dashboard"
 }
 
 output "lightstep_aurora_dashboard_url" {
@@ -26,7 +26,7 @@ output "lightstep_aurora_dashboard_url" {
 
 output "lightstep_autoscaling_dashboard_url" {
   value       = module.lightstep_autoscaling_dashboard.dashboard_url
-  description = "Lightstep AWS Auto Scaling Dashboard"
+  description = "Lightstep AWS AutoScaling Dashboard"
 }
 
 output "lightstep_backup_dashboard_url" {
@@ -66,7 +66,7 @@ output "lightstep_cloudtrail_dashboard_url" {
 
 output "lightstep_cognito_dashboard_url" {
   value       = module.lightstep_cognito_dashboard.dashboard_url
-  description = "Lightstep AWS COGNITO Dashboard"
+  description = "Lightstep AWS Cognito Dashboard"
 }
 
 output "lightstep_dynamodb_dashboard_url" {

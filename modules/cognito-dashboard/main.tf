@@ -9,8 +9,9 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_cognito_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS COGNITO"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Cognito"
+  dashboard_description = "Monitor AWS Cognito with this dashboard."
 
   chart {
     name = "Sign In Successes"

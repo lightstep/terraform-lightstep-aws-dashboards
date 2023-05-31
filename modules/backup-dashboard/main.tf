@@ -9,8 +9,9 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_backup_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Backup"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Backup"
+  dashboard_description = "Monitor AWS Backup with this dashboard."
 
   chart {
     name = "Number of Backup Jobs"

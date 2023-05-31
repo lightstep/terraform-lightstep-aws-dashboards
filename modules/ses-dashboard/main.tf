@@ -9,8 +9,9 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_ses_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS SES"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS SES"
+  dashboard_description = "Monitor AWS SES with this dashboard."
 
   chart {
     name = "Send / Delivery"

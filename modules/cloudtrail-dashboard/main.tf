@@ -9,8 +9,9 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_cloudtrail_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS CloudTrail"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS CloudTrail"
+  dashboard_description = "Monitor AWS CloudTrail with this dashboard."
 
   chart {
     name = "Units Count"
