@@ -9,8 +9,9 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_chatbot_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Chatbot"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Chatbot"
+  dashboard_description = "Monitor AWS Chatbot with this dashboard."
 
   chart {
     name = "Events"

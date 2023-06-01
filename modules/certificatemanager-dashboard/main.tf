@@ -9,8 +9,9 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_certificatemanager_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Certificate Manager"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS Certificate Manager"
+  dashboard_description = "Monitor AWS Certificate Manager with this dashboard."
 
   chart {
     name = "Days To Expiry"

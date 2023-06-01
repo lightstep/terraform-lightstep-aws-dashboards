@@ -9,8 +9,9 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_autoscaling_dashboard" {
-  project_name   = var.lightstep_project
-  dashboard_name = "AWS Auto Scaling"
+  project_name          = var.lightstep_project
+  dashboard_name        = "AWS AutoScaling"
+  dashboard_description = "Monitor AWS AutoScaling with this dashboard."
 
   chart {
     name = "Instances"
