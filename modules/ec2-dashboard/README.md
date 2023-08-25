@@ -1,3 +1,3 @@
-# Lightstep AWS EC2 Dashboard
+# Cloud Observability AWS EC2 Dashboard
 
-This module provisions a Lightstep dashboard for AWS EC2.
+This module provisions a Cloud Observability dashboard for AWS EC2.

@@ -1,3 +1,3 @@
-# Lightstep AWS EFS Dashboard
+# Cloud Observability AWS EFS Dashboard
 
-This module provisions a Lightstep dashboard for Amazon EFS.
+This module provisions a Cloud Observability dashboard for Amazon EFS.

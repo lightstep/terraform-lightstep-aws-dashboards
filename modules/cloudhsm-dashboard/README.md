@@ -1,3 +1,3 @@
-# Lightstep AWS CloudHSM Dashboard
+# Cloud Observability AWS CloudHSM Dashboard
 
-This module provisions a Lightstep dashboard for AWS CloudHSM.
+This module provisions a Cloud Observability dashboard for AWS CloudHSM.

@@ -1,3 +1,3 @@
-# Lightstep AWS API Gateway Dashboard
+# Cloud Observability AWS API Gateway Dashboard
 
-This module provisions a Lightstep dashboard for API Gateway.
+This module provisions a Cloud Observability dashboard for API Gateway.

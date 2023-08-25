@@ -1,3 +1,3 @@
-# Lightstep AWS Event Bridge Dashboard
+# Cloud Observability AWS Event Bridge Dashboard
 
-This module provisions a Lightstep dashboard for AWS Event Bridge.
+This module provisions a Cloud Observability dashboard for AWS Event Bridge.

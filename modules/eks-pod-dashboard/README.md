@@ -1,3 +1,3 @@
-# Lightstep AWS EKS Dashboard
+# Cloud Observability AWS EKS Dashboard
 
-This module provisions a Lightstep dashboard for AWS EKS.
+This module provisions a Cloud Observability dashboard for AWS EKS.

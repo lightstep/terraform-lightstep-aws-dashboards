@@ -1,3 +1,3 @@
-# Lightstep AWS Network Firewall Dashboard
+# Cloud Observability AWS Network Firewall Dashboard
 
-This module provisions a Lightstep dashboard for AWS Network Firewall.
+This module provisions a Cloud Observability dashboard for AWS Network Firewall.

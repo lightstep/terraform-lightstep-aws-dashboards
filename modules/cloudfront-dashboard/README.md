@@ -1,3 +1,3 @@
-# Lightstep AWS CloudFront Dashboard
+# Cloud Observability AWS CloudFront Dashboard
 
-This module provisions a Lightstep dashboard for AWS CloudFront.
+This module provisions a Cloud Observability dashboard for AWS CloudFront.

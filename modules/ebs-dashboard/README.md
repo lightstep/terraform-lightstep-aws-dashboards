@@ -1,3 +1,3 @@
-# Lightstep AWS EBS Dashboard
+# Cloud Observability AWS EBS Dashboard
 
-This module provisions a Lightstep dashboard for AWS EBS.
+This module provisions a Cloud Observability dashboard for AWS EBS.

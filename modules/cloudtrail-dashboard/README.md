@@ -1,3 +1,3 @@
-# Lightstep AWS CloudTrail Dashboard
+# Cloud Observability AWS CloudTrail Dashboard
 
-This module provisions a Lightstep dashboard for AWS CloudTrail.
+This module provisions a Cloud Observability dashboard for AWS CloudTrail.

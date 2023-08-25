@@ -1,3 +1,3 @@
-# Lightstep AWS Chatbot Dashboard
+# Cloud Observability AWS Chatbot Dashboard
 
-This module provisions a Lightstep dashboard for AWS Chatbot.
+This module provisions a Cloud Observability dashboard for AWS Chatbot.

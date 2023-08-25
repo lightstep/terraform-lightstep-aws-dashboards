@@ -1,3 +1,3 @@
-# Lightstep AWS MSK Topic Dashboard
+# Cloud Observability AWS MSK Topic Dashboard
 
-This module provisions a Lightstep dashboard for AWS MSK Topic.
+This module provisions a Cloud Observability dashboard for AWS MSK Topic.
