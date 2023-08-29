@@ -1,3 +1,3 @@
-# Lightstep AWS RDS Dashboard
+# Cloud Observability AWS RDS Dashboard
 
-This module provisions a Lightstep dashboard for AWS Aurora.
+This module provisions a Cloud Observability dashboard for AWS Aurora.

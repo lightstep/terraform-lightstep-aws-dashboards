@@ -1,3 +1,3 @@
-# Lightstep AWS Athena Dashboard
+# Cloud Observability AWS Athena Dashboard
 
-This module provisions a Lightstep dashboard for AWS Athena.
+This module provisions a Cloud Observability dashboard for AWS Athena.

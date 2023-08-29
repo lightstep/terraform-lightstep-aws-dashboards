@@ -1,3 +1,3 @@
-# Lightstep AWS S3 Dashboard
+# Cloud Observability AWS S3 Dashboard
 
-This module provisions a Lightstep dashboard for Amazon S3.
+This module provisions a Cloud Observability dashboard for Amazon S3.

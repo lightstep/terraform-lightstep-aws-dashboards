@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_mks_topic_dashboard" {
-  project_name   = var.lightstep_project
+  project_name   = var.cloud_observability_project
   dashboard_name = "AWS Kafka Topic"
 
   chart {

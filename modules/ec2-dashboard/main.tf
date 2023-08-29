@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_ec2_dashboard" {
-  project_name          = var.lightstep_project
+  project_name          = var.cloud_observability_project
   dashboard_name        = "AWS EC2"
   dashboard_description = "Monitor AWS EC2 - compute - performance metrics."
 

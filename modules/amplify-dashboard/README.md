@@ -1,3 +1,3 @@
-# Lightstep AWS Amplify Dashboard
+# Cloud Observability AWS Amplify Dashboard
 
-This module provisions a Lightstep dashboard for AWS Amplify.
+This module provisions a Cloud Observability dashboard for AWS Amplify.

@@ -1,3 +1,3 @@
-# Lightstep AWS Lambda Dashboard
+# Cloud Observability AWS Lambda Dashboard
 
-This module provisions a Lightstep dashboard for AWS Lambda.
+This module provisions a Cloud Observability dashboard for AWS Lambda.

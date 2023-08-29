@@ -1,3 +1,3 @@
-# Lightstep AWS Step Functions Dashboard
+# Cloud Observability AWS Step Functions Dashboard
 
-This module provisions a Lightstep dashboard for AWS Step Functions.
+This module provisions a Cloud Observability dashboard for AWS Step Functions.

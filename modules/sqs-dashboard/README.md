@@ -1,3 +1,3 @@
-# Lightstep AWS SQS Dashboard
+# Cloud Observability AWS SQS Dashboard
 
-This module provisions a Lightstep dashboard for Amazon SQS.
+This module provisions a Cloud Observability dashboard for Amazon SQS.

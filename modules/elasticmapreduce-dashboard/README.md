@@ -1,3 +1,3 @@
-# Lightstep AWS Elastic Map Reduce Dashboard
+# Cloud Observability AWS Elastic Map Reduce Dashboard
 
-This module provisions a Lightstep dashboard for AWS Elastic Map Reduce.
+This module provisions a Cloud Observability dashboard for AWS Elastic Map Reduce.

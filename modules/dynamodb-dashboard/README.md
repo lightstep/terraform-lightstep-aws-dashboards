@@ -1,3 +1,3 @@
-# Lightstep AWS DynamoDB Dashboard
+# Cloud Observability AWS DynamoDB Dashboard
 
-This module provisions a Lightstep dashboard for AWS DynamoDB.
+This module provisions a Cloud Observability dashboard for AWS DynamoDB.

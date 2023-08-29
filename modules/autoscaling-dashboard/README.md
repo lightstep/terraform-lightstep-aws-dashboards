@@ -1,3 +1,3 @@
-# Lightstep AWS AutoScaling Dashboard
+# Cloud Observability AWS AutoScaling Dashboard
 
-This module provisions a Lightstep dashboard for AWS AutoScaling.
+This module provisions a Cloud Observability dashboard for AWS AutoScaling.

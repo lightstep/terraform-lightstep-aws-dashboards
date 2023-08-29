@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_route53_dashboard" {
-  project_name          = var.lightstep_project
+  project_name          = var.cloud_observability_project
   dashboard_name        = "AWS Route53"
   dashboard_description = "Monitor AWS Route53 with this summary dashboard."
 

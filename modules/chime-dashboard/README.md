@@ -1,3 +1,3 @@
-# Lightstep AWS Chime Dashboard
+# Cloud Observability AWS Chime Dashboard
 
-This module provisions a Lightstep dashboard for AWS Chime.
+This module provisions a Cloud Observability dashboard for AWS Chime.

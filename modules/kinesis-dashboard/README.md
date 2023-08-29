@@ -1,3 +1,3 @@
-# Lightstep AWS Kinesis Dashboard
+# Cloud Observability AWS Kinesis Dashboard
 
-This module provisions a Lightstep dashboard for AWS Kinesis.
+This module provisions a Cloud Observability dashboard for AWS Kinesis.
