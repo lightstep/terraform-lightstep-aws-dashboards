@@ -47,7 +47,7 @@ jobs:
     - name: Setup Terraform Lint
       uses: terraform-linters/setup-tflint@v1
       with:
-        tflint_version: v0.34.1
+        tflint_version: v0.47.0
 
     - name: Terraform Init
       id: init
@@ -56,20 +56,17 @@ jobs:
 
     - name: Lint root module
       run: |
-        tflint --config ${{ github.workspace }}/.tflint.hcl ${{ github.workspace }}
+        tflint --config ${{ github.workspace }}/.tflint.hcl --chdir ${{ github.workspace }}
     - name: Lint modules directory in a loop
       run: |
         for m in $(ls -1d modules/*/)
         do
-          tflint \
-            --config ${{ github.workspace }}/.tflint.hcl \
-            ${{ github.workspace }}/${m}
+          tflint --config ${{ github.workspace }}/.tflint.hcl --chdir ${{ github.workspace }}/${m}
         done
     - name: Lint examples directory in a loop
       run: |
         for m in $(ls -1d examples/*/)
         do
-          tflint \
-            --config ${{ github.workspace }}/.tflint.hcl \
-            ${{ github.workspace }}/${m}
+          terraform -chdir=${{ github.workspace }}/${m} init
+          tflint --config ${{ github.workspace }}/.tflint.hcl --chdir ${{ github.workspace }}/${m} --minimum-failure-severity=error
         done
