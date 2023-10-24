@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# get latest version of lightstep provider
+LATEST_VERSION=$(curl -s "https://registry.terraform.io/v1/providers/lightstep/lightstep/versions" | jq -r '.versions[] | select(.version) | .version' | sort -V | tail -1)
+
+echo "Latest provider version is $LATEST_VERSION"
+
+# safer to target file types with the -name flag like .. -name "*.tf", but I at least
+# need this to apply
+find . -type f \( -name "*.go" -name "*.tf" \) -exec sed -i '' -E "s/version = \"~> ([0-9]+\.){2}[0-9]+\"/version = \"~> $LATEST_VERSION\"/g" {} +

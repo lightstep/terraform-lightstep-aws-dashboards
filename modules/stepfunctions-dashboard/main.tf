@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_step_functions_dashboard" {
-  project_name          = var.cloud_observability_project
+  project_name          = var.lightstep_project
   dashboard_name        = "AWS Step Functions"
   dashboard_description = "Monitor AWS Step Functions with this view of execution results."
 

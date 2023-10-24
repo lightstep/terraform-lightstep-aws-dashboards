@@ -9,9 +9,9 @@ terraform {
 }
 
 provider "lightstep" {
-  api_key_env_var = var.cloud_observability_api_key_env_var
-  organization    = var.cloud_observability_organization
-  environment     = var.cloud_observability_env
+  api_key_env_var = var.lightstep_api_key_env_var
+  organization    = var.lightstep_organization
+  environment     = var.lightstep_env
 }
 
 module "lightstep_applicationelb_dashboard" {
@@ -19,5 +19,5 @@ module "lightstep_applicationelb_dashboard" {
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:lightstep/terraform-lightstep-aws-dashboards.git//modules/ec2-dashboard?ref=v0.0.1"
   source                      = "../../modules/applicationelb-dashboard"
-  cloud_observability_project = var.cloud_observability_project
+  lightstep_project = var.lightstep_project
 }

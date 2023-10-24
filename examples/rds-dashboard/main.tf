@@ -19,6 +19,6 @@ module "lightstep_ec2_dashboard" {
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:lightstep/terraform-lightstep-aws-dashboards.git//modules/ec2-dashboard?ref=v0.0.1"
   source                      = "../../modules/rds-dashboard"
-  cloud_observability_project = var.cloud_observability_project
+  lightstep_project = var.lightstep_project
   aws_region                  = "us-west-2"
 }
