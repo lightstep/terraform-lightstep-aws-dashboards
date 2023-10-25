@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_networkfirewall_dashboard" {
-  project_name          = var.cloud_observability_project
+  project_name          = var.lightstep_project
   dashboard_name        = "AWS Network Firewall"
   dashboard_description = "Monitor AWS Network Firewall with this dashboard."
 

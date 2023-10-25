@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_sns_dashboard" {
-  project_name          = var.cloud_observability_project
+  project_name          = var.lightstep_project
   dashboard_name        = "AWS SNS"
   dashboard_description = "Monitor AWS SNS performance with this summary dashboard."
 

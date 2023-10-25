@@ -9,7 +9,7 @@ terraform {
 }
 
 resource "lightstep_dashboard" "aws_ecs_dashboard" {
-  project_name          = var.cloud_observability_project
+  project_name          = var.lightstep_project
   dashboard_name        = "AWS ECS"
   dashboard_description = "Monitor AWS ECS with this summary dashboard."
 
