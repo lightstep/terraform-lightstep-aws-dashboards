@@ -82,7 +82,7 @@ This repository uses `pre-commit` and `tflint` to format and lint HCL code.
 To install:
 
 ```
-    $ brew install 'tflint'
+    $ brew install tflint
     $ brew install pre-commit
     $ pre-commit install
 ```
