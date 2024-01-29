@@ -4,6 +4,7 @@ ready: gen fmt check
 
 # generates the root module main.tf, variables.tf, outputs.tf and README.md
 gen:
+	terraform init -upgrade
 	go run tools/generaterootmod.go
 
 fmt:
@@ -12,7 +13,7 @@ fmt:
 
 check:
 	terraform fmt -check -recursive
-	tflint --config .tflint.hcl --recursive --minimum-failure-severity=error
+	tflint --recursive --minimum-failure-severity=error
 
 clean:
 	rm -rf .terraform*
